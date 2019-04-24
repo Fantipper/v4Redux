@@ -10,8 +10,10 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
 import SplashScreen from './src/screens/SplashScreen';
+import Home from './src/screens/Home';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+// https://expo.github.io/vector-icons/
 
 export default class App extends Component {
   // create constructor for App component 
@@ -52,36 +54,7 @@ export default class App extends Component {
       return <SplashScreen />;
     }
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <View style={{
-          flex: 1,
-          height: 40,
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'lightgreen',
-          flexDirection: 'row'
-        }}>
-          {/* fetch nearyby data from database when onpress*/}
-          <Text style={{ color: 'white', fontSize: 16 }}>Nearby </Text>
-          <Icon
-            name="rocket"
-            color="white"
-            size={16}
-          ></Icon>
-        </View>
-        <View style={{
-          flex: 12,
-          height: 40,
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'lightblue',
-          flexDirection: 'row'
-        }}>
-          <Text>Feed</Text>
-        </View>
-      </View>
+      <Home />
     );
   }
 }
