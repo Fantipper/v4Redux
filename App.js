@@ -11,6 +11,8 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 
 import SplashScreen from './src/screens/SplashScreen';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 export default class App extends Component {
   // create constructor for App component 
   // set an initial state
@@ -62,11 +64,11 @@ export default class App extends Component {
         }}>
           {/* fetch nearyby data from database when onpress*/}
           <Text style={{ color: 'white', fontSize: 16 }}>Nearby </Text>
-          <FontAwesome
-            name="map-marker"
+          <Icon
+            name="rocket"
             color="white"
             size={16}
-          />
+          ></Icon>
         </View>
         <View style={{
           flex: 12,
