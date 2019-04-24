@@ -8,20 +8,50 @@ import {
   TouchableOpacity, 
   Image 
 } from 'react-native';
+import { Card, CardItem, Thumbnail, Body, Left, Right, Button } from 'native-base';
+import Icon from 'react-native-vector-icons/FontAwesome';
+// https://expo.github.io/vector-icons/
 
 class Cards extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.card}>
-          <Image 
-            style={styles.cardImage} 
-            source={require('../assets/images/spidy.jpg')}
-          />
-          <Text>Card 1</Text>
-        </TouchableOpacity>
-        <Text>Cards</Text>
-      </View>
+      // <View style={styles.container}>
+      <Card>
+        <CardItem>
+          <Left>
+            <Thumbnail 
+              square large source={require('../assets/images/spidy.jpg')}
+            />
+            <Body> 
+              <Icon name="location-arrow" color="green" size={18}></Icon>
+              <Text>32 m</Text>
+              <Text>Location </Text>
+              <Text>MELBOURNE</Text>
+              <TouchableOpacity>
+                <Text style={styles.readmoreText}>Read more ...</Text>
+              </TouchableOpacity>
+            </Body>
+          </Left>
+        </CardItem>
+      {/* </Card>
+      <Card> */}
+        <CardItem>
+          <Left>
+            <Thumbnail 
+              square large source={require('../assets/images/spidy.jpg')}
+            />
+            <Body> 
+              <Icon name="location-arrow" color="green" size={18}></Icon>
+              <Text>32 m</Text>
+              <Text>Location </Text>
+              <Text>MELBOURNE</Text>
+              <TouchableOpacity>
+                <Text style={styles.readmoreText}>Read more ...</Text>
+              </TouchableOpacity>
+            </Body>
+          </Left>
+        </CardItem>
+      </Card>
     );
   }
 }
@@ -49,5 +79,11 @@ const styles = StyleSheet.create({
 		width: '40%', 
     height: 100,
     resizeMode: 'cover',
+  },
+  readmoreText: {
+    textDecorationLine: 'underline',
+    // color
+    // fontSize
+    // font
   }
 });
