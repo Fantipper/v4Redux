@@ -50,9 +50,35 @@ export default class App extends Component {
       return <SplashScreen />;
     }
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text>Reload the App the see a splash screen</Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{
+          flex: 1,
+          height: 40,
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'lightgreen',
+          flexDirection: 'row'
+        }}>
+          {/* fetch nearyby data from database when onpress*/}
+          <Text style={{ color: 'white', fontSize: 16 }}>Nearby </Text>
+          <FontAwesome
+            name="map-marker"
+            color="white"
+            size={16}
+          />
+        </View>
+        <View style={{
+          flex: 12,
+          height: 40,
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'lightblue',
+          flexDirection: 'row'
+        }}>
+          <Text>Feed</Text>
+        </View>
       </View>
     );
   }
