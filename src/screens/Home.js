@@ -1,8 +1,14 @@
 /* Home.js */
-import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  Button 
+} from 'react-native';
 
 import SplashScreen from './SplashScreen';
+import Cards from './Cards';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 // https://expo.github.io/vector-icons/
@@ -58,6 +64,7 @@ class Home extends Component {
           ></Icon>
         </View>
         <View style={styles.cardsContainer}>
+        <Button title="Cards" onPress={() => this.props.navigation.navigate('Cards')} />
           <Text>Feed</Text>
         </View>
       </View>
