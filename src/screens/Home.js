@@ -65,6 +65,7 @@ class Home extends Component {
         </View>
         <View style={styles.cardsContainer}>
         <Button title="Cards" onPress={() => this.props.navigation.navigate('Cards')} />
+        {/* <Cards /> */}
           <Text>Feed</Text>
         </View>
       </View>
