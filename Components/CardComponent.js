@@ -17,8 +17,8 @@ class CardComponent extends Component {
             <Image source={require('../src/assets/images/spidy.jpg')} style={styles.profileIcon} />
              <Image source={images.broShakeLogo} style={styles.broShakeLogo} />
           </Left>
-          <Body> 
-            <Icon name="location-arrow" type="FontAwesome" style={{ color: "#00d278", fontSize: 18 }} >32 m</Icon>
+          <Body style={{borderWidth: 2, paddingLeft: 20}}> 
+            <Icon name="location-arrow" type="FontAwesome" style={{ color: "#00d278", fontSize: 18 }} > 32 m</Icon>
             <Text>Location </Text>
             <Text>MELBOURNE</Text>
             <TouchableOpacity>
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 30, 
     width: 150, 
-    borderWidth: 2
+    borderWidth: 2,
+    backgroundColor: 'yellow'
   }
 });
