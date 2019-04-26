@@ -73,6 +73,18 @@
 		<string>Roboto_medium.ttf</string>
 		<string>Roboto.ttf</string>
 		<string>rubicon-icon-font.ttf</string>
+		<string>Larsseit-Bold.otf</string>
+		<string>Larsseit-BoldItalic.otf</string>
+		<string>Larsseit-Light.otf</string>
+		<string>Larsseit-Medium.otf</string>
+		<string>Larsseit-MediumItalic.otf</string>
+		<string>Larsseit-Thin.otf</string>
+		<string>Larsseit.otf</string>
+		<string>Roboto-Black.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Regular.ttf</string>
 	</array>
 </dict>
 </plist>
