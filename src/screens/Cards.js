@@ -12,7 +12,10 @@ class Cards extends Component {
     return (
       <View style={styles.container}>
         <Content>
-          <CardComponent />
+          <CardComponent imageSource="1"/>
+          <CardComponent imageSource="2"/>
+          <CardComponent imageSource="3"/>
+          <CardComponent imageSource="2"/>
         </Content>
       </View>
     );
