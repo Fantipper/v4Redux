@@ -6,6 +6,7 @@ import { Card, CardItem, Thumbnail, Body, Left, Icon  } from 'native-base';
 // https://expo.github.io/vector-icons/
 
 import images from './../src/assets/Images';
+import fonts from './../src/assets/Fonts';
 
 class CardComponent extends Component {
   render() {
@@ -18,9 +19,12 @@ class CardComponent extends Component {
              <Image source={images.broShakeLogo} style={styles.broShakeLogo} />
           </Left>
           <Body style={{borderWidth: 2, paddingLeft: 20}}> 
-            <Icon name="location-arrow" type="FontAwesome" style={{ color: "#00d278", fontSize: 18 }} > 32 m</Icon>
-            <Text>Location </Text>
-            <Text>MELBOURNE</Text>
+            <Icon name="location-arrow" type="FontAwesome" 
+              style={{ color: "#00d278" ,fontSize: 18 }} >
+              <Text style={styles.distanceText}> 32 m</Text>
+            </Icon>
+            <Text style={styles.locationText}>Atomica </Text>
+            <Text style={styles.cityText}>MELBOURNE</Text>
             <TouchableOpacity>
               <Text style={styles.readmoreText}>Read more...</Text>
             </TouchableOpacity>
@@ -34,9 +38,22 @@ class CardComponent extends Component {
 export default CardComponent;
 
 const styles = StyleSheet.create({
-  
+  distanceText: {
+    fontFamily: fonts.LarsseitBold
+  },
+  locationText: {
+    fontFamily: fonts.LarsseitBold,
+    color: 'black',
+    fontSize: 20,
+  },
+  cityText: {
+    fontFamily: fonts.LarsseitBold,
+    fontSize: 16,
+  },
   readmoreText: {
     textDecorationLine: 'underline',
+    fontFamily: fonts.Larsseit,
+    fontSize: 18,
     // color
     // fontSize
     // font
