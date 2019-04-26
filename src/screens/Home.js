@@ -1,11 +1,6 @@
 /* Home.js */
 import React, { Component } from 'react';
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  Button 
-} from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 
 import SplashScreen from './SplashScreen';
 import Cards from './Cards';
@@ -54,20 +49,22 @@ class Home extends Component {
     }
     return (
       <View style={styles.container}>
-        <View style={styles.nearbyBar}>
-          {/* fetch nearyby data from database when onpress*/}
-          <Text style={styles.nearbyText}>Nearby </Text>
-          <Icon
-            name="compass"
-            color="white"
-            size={18}
-          ></Icon>
-        </View>
-        <View style={styles.cardsContainer}>
-        <Button title="Cards" onPress={() => this.props.navigation.navigate('Cards')} />
-        {/* <Cards /> */}
-          <Text>Feed</Text>
-        </View>
+        <ScrollView style={styles.scrollContainer}>
+          <View style={styles.nearbyBar}>
+            {/* fetch nearyby data from database when onpress*/}
+            <Text style={styles.nearbyText}>Nearby </Text>
+            <Icon
+              name="compass"
+              color="white"
+              size={18}
+            ></Icon>
+          </View>
+          <View style={styles.cardsContainer}>
+          <Button title="Cards" onPress={() => this.props.navigation.navigate('Cards')} />
+          {/* <Cards /> */}
+            <Text>Feed</Text>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -81,11 +78,16 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     justifyContent: 'center'
   },
-  nearbyBar: {
+  scrollContainer: {
     flex: 1,
+  },
+  nearbyBar: {
+    // flex: 1,
+    // position: 'absolute',
     height: 30,
     width: '100%',
     alignItems: 'center',
+    // alignItems: 'stretch',
     justifyContent: 'center',
     backgroundColor: '#00d278',
     flexDirection: 'row'
@@ -95,12 +97,13 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   cardsContainer: {
-    flex: 12,
+    // flex: 12,
+    
     height: 40,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'lightblue',
-    flexDirection: 'row'
+    // flexDirection: 'row'
   }
 });
