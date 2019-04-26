@@ -1,0 +1,18 @@
+import React from 'react';
+import { Text, StyleSheet } from 'react-native';
+import fonts from './../src/assets/Fonts';
+
+const mainText = props => (
+  <Text style={styles.mainText}>{props.children}</Text>
+);
+
+const styles = StyleSheet.create({
+  mainText: {
+    fontFamily: fonts.Larsseit,
+    fontSize: 18,
+
+    color: '#7e7e7e', // inactive color  
+  }
+});
+
+export default mainText;
