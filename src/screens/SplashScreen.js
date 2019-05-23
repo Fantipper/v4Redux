@@ -11,6 +11,11 @@ import {
 } from 'react-native';
 
 class SplashScreen extends Component {
+	// TODO: this is not working, need react navigation
+	// static navigationOptions = {
+  //   //To hide the ActionBar/NavigationBar
+  //   header: null,
+	// };
 	render() {
     return (
       <View style={styles.container}>

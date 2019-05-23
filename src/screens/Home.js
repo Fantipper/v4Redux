@@ -1,6 +1,7 @@
 /* Home.js */
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
+import fonts from '../assets/Fonts';
 
 import SplashScreen from './SplashScreen';
 import Cards from './Cards';
@@ -49,9 +50,29 @@ class Home extends Component {
     }
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.scrollContainer}>
+        {/* <View style={[{ flex: 1 }, styles.elementsContainer]}>        
+        <View style={{ flex: 1, backgroundColor: 'yellow'}} />
+        <View style={{ flex: 2, backgroundColor: 'red'}} />
+        <View style={{ flex: 3, backgroundColor: 'blue'}} />
+        </View> */}
+        <ScrollView>
+        <View style={{ height: 150, backgroundColor: '#f5f5f5', paddingVertical: 28}}>
+          <Text 
+          style={{
+            fontFamily: fonts.LarsseitBold,
+            fontSize: 20,
+            color: '#1a1a1a',
+            textAlign: 'center',
+            lineHeight: 30
+            }}>
+              Welcome to Fan Tipper,{"\n"}the world's first social{"\n"}tipping platform.
+          </Text>
+        </View>
+        <Cards />
+        </ScrollView>
+        {/* <ScrollView style={styles.scrollContainer}>
           <View style={styles.nearbyBar}>
-            {/* fetch nearyby data from database when onpress*/}
+            {/* fetch nearyby data from database when onpress}
             <Text style={styles.nearbyText}>Nearby </Text>
             <Icon
               name="compass"
@@ -60,11 +81,11 @@ class Home extends Component {
             ></Icon>
           </View>
           <View style={styles.cardsContainer}>
-          <Button title="Cards" onPress={() => this.props.navigation.navigate('Cards')} />
-          {/* <Cards /> */}
+          <Button title="Cards" onPress={() => this.props.navigation.navigate('cards')} />
+          {/* <Cards /> }
             <Text>Feed</Text>
           </View>
-        </ScrollView>
+        </ScrollView> */}
       </View>
     );
   }
@@ -75,11 +96,14 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center'
+    // alignItems: 'center', 
+    // justifyContent: 'center'
   },
-  scrollContainer: {
-    flex: 1,
+  elementsContainer: {
+    backgroundColor: '#ecf5fd',
+    marginLeft: 24,
+    marginRight: 24,
+    // marginBottom: 24
   },
   nearbyBar: {
     // flex: 1,

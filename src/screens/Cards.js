@@ -10,14 +10,14 @@ import CardComponent from '../../Components/CardComponent';
 class Cards extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      // <View style={styles.container}>
         <Content>
           <CardComponent imageSource="1"/>
           <CardComponent imageSource="2"/>
           <CardComponent imageSource="3"/>
           <CardComponent imageSource="2"/>
         </Content>
-      </View>
+      // </View>
     );
   }
 }

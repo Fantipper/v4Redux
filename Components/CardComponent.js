@@ -31,7 +31,7 @@ class CardComponent extends Component {
               style={{ color: "#00d278" ,fontSize: 18 }} >
               <Text style={styles.distanceText}> 32 m</Text>
             </Icon>
-            <Text style={styles.locationText}>Atomica </Text>
+            <Text style={styles.locationText}>Atomica</Text>
             <Text style={styles.cityText}>MELBOURNE</Text>
             <View style={{borderWidth: 0, paddingTop: 26}}>
               <TouchableOpacity>
@@ -58,18 +58,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   cityText: {
-    // fontFamily: fonts.LarsseitBold,
+    fontFamily: fonts.LarsseitBold,
     fontSize: 16,
   },
   readmoreText: {
-
+    color: '#6a6a6a', // TO-EDIT: may need to pick a darker color
     textDecorationLine: 'underline',
-    // fontFamily: fonts.Larsseit,
+    fontFamily: fonts.Larsseit,
     fontSize: 18,
-    // paddingTop: 10,
-    // color
-    // fontSize
-    // font
   }, 
   profileIcon: {
     resizeMode: 'cover',
