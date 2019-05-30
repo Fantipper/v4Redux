@@ -1,8 +1,8 @@
-/* MessageScreen.js */
+/* CreatorScreen.js */
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
-export default class MessageScreen extends Component {
+export default class CreatorScreen extends Component {
   render() {
     return(
       <View style={styles.container}>
@@ -11,12 +11,12 @@ export default class MessageScreen extends Component {
             <Text 
             style={{
               fontFamily: fonts.LarsseitBold,
-              fontSize: 20,
-              color: '#1a1a1a',
+              fontSize: 30,
+              color: 'white',
               textAlign: 'center',
               lineHeight: 30
               }}>
-                Messages
+                DJ Ash Millott
             </Text>
           </View>
         </ScrollView>

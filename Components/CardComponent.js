@@ -9,11 +9,11 @@ import images from './../src/assets/Images';
 import fonts from './../src/assets/Fonts';
 import MainText from './MainText';
 
-class CardComponent extends Component {
+export default class CardComponent extends Component {
   render() {
 
     const creatorProfile = {
-      "1": require('../src/assets/images/cprofile_1.jpg'),
+      "1": require('../src/assets/images/cprofile_2.jpg'),
       "2": require('../src/assets/images/cprofile_2.jpg'),
       "3": require('../src/assets/images/cprofile_3.jpg'),
     }
@@ -34,9 +34,8 @@ class CardComponent extends Component {
             <Text style={styles.locationText}>Atomica</Text>
             <Text style={styles.cityText}>MELBOURNE</Text>
             <View style={{borderWidth: 0, paddingTop: 26}}>
-              <TouchableOpacity>
-                <MainText>
-                <Text style={styles.readmoreText}>Read more...</Text></MainText>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('creator')}>
+                <MainText><Text style={styles.readmoreText}>Read more...</Text></MainText>
               </TouchableOpacity>
               </View>
           </Body>
@@ -46,7 +45,7 @@ class CardComponent extends Component {
   }
 }
 
-export default CardComponent;
+// export default CardComponent;
 
 const styles = StyleSheet.create({
   distanceText: {
@@ -75,8 +74,6 @@ const styles = StyleSheet.create({
   broShakeLogo: {
     resizeMode: 'contain',
     height: 48, 
-    width: 150, 
-    borderWidth: 2,
-    backgroundColor: 'yellow'
+    width: 150,
   }
 });

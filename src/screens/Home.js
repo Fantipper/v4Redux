@@ -50,11 +50,6 @@ class Home extends Component {
     }
     return (
       <View style={styles.container}>
-        {/* <View style={[{ flex: 1 }, styles.elementsContainer]}>        
-        <View style={{ flex: 1, backgroundColor: 'yellow'}} />
-        <View style={{ flex: 2, backgroundColor: 'red'}} />
-        <View style={{ flex: 3, backgroundColor: 'blue'}} />
-        </View> */}
         <ScrollView>
         <View style={{ height: 150, backgroundColor: '#f5f5f5', paddingVertical: 28}}>
           <Text 
@@ -70,22 +65,6 @@ class Home extends Component {
         </View>
         <Cards />
         </ScrollView>
-        {/* <ScrollView style={styles.scrollContainer}>
-          <View style={styles.nearbyBar}>
-            {/* fetch nearyby data from database when onpress}
-            <Text style={styles.nearbyText}>Nearby </Text>
-            <Icon
-              name="compass"
-              color="white"
-              size={18}
-            ></Icon>
-          </View>
-          <View style={styles.cardsContainer}>
-          <Button title="Cards" onPress={() => this.props.navigation.navigate('cards')} />
-          {/* <Cards /> }
-            <Text>Feed</Text>
-          </View>
-        </ScrollView> */}
       </View>
     );
   }
@@ -95,7 +74,7 @@ export default Home;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
     // alignItems: 'center', 
     // justifyContent: 'center'
   },

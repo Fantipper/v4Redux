@@ -6,6 +6,11 @@
  * @flow
  */
 
+ /**
+  * Stuff i need: 
+  * search screen 
+  * handshard logo + default profile pic
+  */
 import React, { Component } from 'react';
 import { 
   Platform, 
@@ -22,6 +27,7 @@ import OfferScreen from './src/screens/OfferScreen';
 import MenuScreen from './src/screens/MenuScreen';
 import MessageScreen from './src/screens/MessageScreen';
 import SearchScreen from './src/screens/SearchScreen';
+import CreatorScreen from './src/screens/CreatorScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -145,7 +151,8 @@ const AppStackNavigator = createStackNavigator({
   // home: Home,
   InitialStackNavigator,
   cards: Cards,
-  search: SearchScreen
+  search: SearchScreen,
+  creator: CreatorScreen,
 }, {
   headerMode: "none"
 });
