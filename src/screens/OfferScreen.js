@@ -1,10 +1,15 @@
 /* OfferScreen.js */
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView, Dimensions, Image, ImageBackground } from 'react-native';
+
 var fullWidth = Dimensions.get('window').width; //full width
 import Icon from 'react-native-vector-icons/FontAwesome';
-import ButtonText from '../../Components/ButtonText';
-import { Row } from 'native-base';
+import ButtonText from '../../Components/buttonText';
+import images from '../assets/Images';
+import { ListItem, Content, Card, CardItem } from 'native-base';
+import Fonts from '../assets/Fonts';
+
+// import { Row } from 'native-base';
 export default class OfferScreen extends Component {
   render() {
     return(
@@ -16,7 +21,7 @@ export default class OfferScreen extends Component {
       <ScrollView>
         <View style={{}}>
           <ImageBackground
-            style={{ height: 350, width: fullWidth }}
+            style={styles.profileBackground}
             resizeMode= 'cover'
             source={require('../assets/images/userA/background-01.jpg')}>
             <View style={styles.overlay}>
@@ -26,13 +31,13 @@ export default class OfferScreen extends Component {
               <Text style={styles.creatorName}>
                   DJ Ash Millott
               </Text>
-              <Text style={styles.creatorLocation}>
+              <Text style={styles.subtitleText}>
                   MOSCOW, RUSSIA
               </Text>
               <View style={styles.shareBtnRow}>
                 <View style={styles.shareBtnContainer}>
                   <Icon.Button 
-                    style={{marginHorizontal:6}}
+                    style={styles.shareBtnStyle}
                     name="facebook" 
                     backgroundColor='#3b5998'>
                       <ButtonText>Share</ButtonText>
@@ -40,32 +45,54 @@ export default class OfferScreen extends Component {
                 </View>
                 <View style={styles.shareBtnContainer}>
                   <Icon.Button 
-                    style={{marginHorizontal:6}}
+                    style={styles.shareBtnStyle}
                     name="twitter" 
                     backgroundColor='#4099FF'>
-                      <ButtonText>Tweet</ButtonText>
+                    <ButtonText>Tweet</ButtonText>
                   </Icon.Button>
                 </View>
                 <View style={styles.shareBtnContainer}>
                   <Icon.Button 
-                    style={{marginHorizontal:6}}
+                    style={styles.shareBtnStyle}
                     name="instagram" 
                     backgroundColor='#DA3176'>
-                      <ButtonText>Share</ButtonText>
+                    <ButtonText>Share</ButtonText>
                   </Icon.Button>
                 </View>
               </View>
               <View style={styles.shareFanTip}>
                 <Icon.Button 
-                  style={{marginHorizontal:6}}
+                  style={styles.shareBtnStyle}
                   name="paperclip" 
                   color='#8C8C8C'
                   backgroundColor='#DDDDDD'>
-                    <ButtonText style={{color: '#8C8C8C'}}>FanTipper.com/nameOfCreator</ButtonText>
+                  <ButtonText style={{color: '#8C8C8C'}}>FanTipper.com/nameOfCreator</ButtonText>
                 </Icon.Button>
               </View>
             </View>
           </ImageBackground>
+          {/* <View style={styles.secondContainer}> */}
+            <ListItem>
+            <Image source={images.broShakeLogo} style={styles.broShakeLogo}/>
+            </ListItem>
+            <ListItem>
+              <View style={styles.tipCountSection}>
+                <View style={{flexDirection: 'column', alignItems: 'flex-start', width: 150}}>
+                  <Text style={styles.subtitleText}>TIPS</Text>
+                  <Text style={styles.tipMoneyText}>2801</Text>
+                </View>
+                <View style={{flexDirection: 'column',width: 150, }}>
+                  <Text style={styles.subtitleText}>$</Text>
+                  <Text style={styles.tipMoneyText}>516.80</Text>
+                </View>
+              </View>
+              <View>
+              <Text>"Your generosity will help me reach me target to record a new album."</Text>
+              <Text>11% OF $50000 TARGET REACHED</Text>
+              </View>
+            </ListItem>
+
+          {/* </View> */}
         </View>
       </ScrollView>
     </View>
@@ -80,12 +107,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  profileBackground: {
+    height: 350, 
+    width: fullWidth,
+  },
   overlay: {
     height: 350,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 0,
-    borderColor: 'white', 
     paddingVertical: 16,
   },
   creatorIcon: {
@@ -103,11 +132,11 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     marginVertical: 10,
   },
-  creatorLocation: {
+  subtitleText: {
     fontFamily: fonts.LarsseitBold,
     fontSize: 16,
     letterSpacing: 1.5,
-    color: '#7e7e7e',
+    color: '#8c8c8c',
     lineHeight: 30
   },
   shareBtnRow: {
@@ -117,8 +146,28 @@ const styles = StyleSheet.create({
   shareBtnContainer: {
     paddingHorizontal: 6
   },
-  shareFanTip: {
-    // paddingBottom: 16,
+  shareBtnStyle: {
+    marginHorizontal: 6
+  },
+  secondContainer:{
+    // height: 140,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // borderColor: 'black',
+    // borderWidth: 2,
+  },
+  broShakeLogo: {
+    resizeMode: 'contain',
+    height: 50,
+    borderRadius: 4,
+  },
+  tipCountSection: {
+    flexDirection: 'row',
+  },
+  tipMoneyText: {
+    fontFamily: Fonts.LarsseitBold,
+    fontSize: 40, 
+    color: '#464646',
   },
   instruction: {
     fontSize: 16,

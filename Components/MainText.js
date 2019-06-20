@@ -3,14 +3,13 @@ import { Text, StyleSheet } from 'react-native';
 import fonts from './../src/assets/Fonts';
 
 const mainText = props => (
-  <Text style={styles.mainText}>{props.children}</Text>
+  <Text style={styles.mainTexts}>{props.children}</Text>
 );
 
 const styles = StyleSheet.create({
-  mainText: {
+  mainTexts: {
     fontFamily: fonts.Larsseit,
     fontSize: 18,
-
     color: '#7e7e7e', // inactive color  
   }
 });

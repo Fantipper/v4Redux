@@ -6,20 +6,16 @@ export default class MessageScreen extends Component {
   render() {
     return(
       <View style={styles.container}>
-        <ScrollView>
-          <View style={{ height: 150, backgroundColor: '#f5f5f5', paddingVertical: 28}}>
-            <Text 
-            style={{
-              fontFamily: fonts.LarsseitBold,
-              fontSize: 20,
-              color: '#1a1a1a',
-              textAlign: 'center',
-              lineHeight: 30
-              }}>
-                Messages
-            </Text>
-          </View>
-        </ScrollView>
+        <Text 
+        style={{
+          fontFamily: fonts.LarsseitBold,
+          fontSize: 20,
+          color: '#1a1a1a',
+          textAlign: 'center',
+          lineHeight: 30
+          }}>
+            COMING SOON!
+        </Text>
       </View>
     );
   }

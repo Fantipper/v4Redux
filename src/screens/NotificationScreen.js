@@ -6,8 +6,16 @@ export default class NotificationScreen extends Component {
   render() {
     return(
       <View style={styles.container}>
-        <Text style={styles.welcome}>NotificationScreen</Text>
-        <Text style={styles.instruction}>This screen show notification of the user</Text>
+        <Text 
+        style={{
+          fontFamily: fonts.LarsseitBold,
+          fontSize: 20,
+          color: '#1a1a1a',
+          textAlign: 'center',
+          lineHeight: 30
+          }}>
+            COMING SOON!
+        </Text>
       </View>
     );
   }
