@@ -7,7 +7,8 @@ import { Card, CardItem, Thumbnail, Body, Left, Icon, View  } from 'native-base'
 
 import images from './../src/assets/Images';
 import fonts from './../src/assets/Fonts';
-import MainText from './MainText';
+import CT from '../src/assets/CT';
+
 
 export default class CardComponent extends Component {
   render() {
@@ -34,8 +35,7 @@ export default class CardComponent extends Component {
             <Text style={styles.locationText}>Atomica</Text>
             <Text style={styles.cityText}>MELBOURNE</Text>
             <View style={{borderWidth: 0, paddingTop: 26}}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('creator')}>
-                <MainText><Text style={styles.readmoreText}>Read more...</Text></MainText>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('creator')}><CT.ReadmoreText/>
               </TouchableOpacity>
               </View>
           </Body>
@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.LarsseitBold,
     fontSize: 16,
   },
-  readmoreText: {
-    color: '#6a6a6a', // TO-EDIT: may need to pick a darker color
-    textDecorationLine: 'underline',
-    fontFamily: fonts.Larsseit,
-    fontSize: 18,
-  }, 
+  // readmoreText: {
+  //   color: '#6a6a6a', // TO-EDIT: may need to pick a darker color
+  //   textDecorationLine: 'underline',
+  //   fontFamily: fonts.Larsseit,
+  //   fontSize: 18,
+  // }, 
   profileIcon: {
     resizeMode: 'cover',
      height: 80, 

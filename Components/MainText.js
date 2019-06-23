@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
-import fonts from './../src/assets/Fonts';
+import fonts from '../src/assets/Fonts';
 
 const mainText = props => (
   <Text style={styles.mainTexts}>{props.children}</Text>
