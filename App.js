@@ -18,7 +18,7 @@ import {
   Text, 
   View, Image
 } from 'react-native';
-import { createAppContainer, createStackNavigator, createBottomTabNavigator,  } from 'react-navigation';
+import { createAppContainer, createStackNavigator, createBottomTabNavigator, createDrawerNavigator } from 'react-navigation';
 
 import HomeScreen from './src/screens/Home';
 import Cards from './src/screens/Cards';
@@ -28,6 +28,8 @@ import MenuScreen from './src/screens/MenuScreen';
 import MessageScreen from './src/screens/MessageScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import CreatorScreen from './src/screens/CreatorScreen';
+import EditProfileScreen from './src/screens/EditProfileScreen';
+import HistoryScreen from './src/screens/HistoryScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -43,6 +45,26 @@ export default class App extends Component {
     );
   }
 }
+const AppDrawerNavigator = createDrawerNavigator ({
+  history: {
+    screen: HistoryScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: `FanTip History`,
+    }),
+  },
+  editProfile: {
+    screen: EditProfileScreen,
+  }
+},
+{
+  unmountInactiveRoute: true,
+  initialRouteName: 'editProfile',
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: 'orange',
+    }
+  }
+});
 const AppBottomTabNavigator = createBottomTabNavigator ({
   notification: {
     screen: NotificationScreen,
@@ -72,6 +94,9 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
       title: `Offer`,
     }
   },
+  drawer: {
+    screen: AppDrawerNavigator,
+  },
   menu: {
     screen: MenuScreen,
     navigationOptions:{
@@ -98,7 +123,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
   //   };
   // },
   initialRouteName: 'home',
-  order: [ 'notification', 'message', 'home', 'offer', 'menu' ],
+  order: [ 'notification', 'message', 'home', 'offer', 'menu', 'drawer' ],
   tabBarOptions: {
     showLabel: false,
     tintColor: '#626262',
