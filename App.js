@@ -26,10 +26,14 @@ import NotificationScreen from './src/screens/NotificationScreen';
 import OfferScreen from './src/screens/OfferScreen';
 import MenuScreen from './src/screens/MenuScreen';
 import MessageScreen from './src/screens/MessageScreen';
+
 import SearchScreen from './src/screens/SearchScreen';
 import CreatorScreen from './src/screens/CreatorScreen';
+
 import EditProfileScreen from './src/screens/EditProfileScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
+import AboutScreen from './src/screens/AboutScreen';
+import TermsScreen from './src/screens/TermsScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -45,24 +49,42 @@ export default class App extends Component {
     );
   }
 }
-const AppDrawerNavigator = createDrawerNavigator ({
+const HomeStack = createStackNavigator ({
+  home: {
+    screen: HomeScreen,
+  },
+  creator: {
+    screen: CreatorScreen
+  },
+},
+{
+  headerMode: 'none'
+});
+
+const DrawerStackNavigator = createStackNavigator ({
+  menuDrawer: {
+    screen: MenuScreen,
+  },
   history: {
     screen: HistoryScreen,
     navigationOptions: ({ navigation }) => ({
       title: `FanTip History`,
     }),
   },
+  about: {
+    screen: AboutScreen,
+  },
   editProfile: {
     screen: EditProfileScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: `Edit Profile`,
+    }),
   }
 },
 {
-  unmountInactiveRoute: true,
-  initialRouteName: 'editProfile',
+  headerMode: 'none',
+  initialRouteName: 'menuDrawer',
   defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: 'orange',
-    }
   }
 });
 const AppBottomTabNavigator = createBottomTabNavigator ({
@@ -76,8 +98,9 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
       title: `Notification`,
     }
   },
-  home: {
-    screen: HomeScreen,
+  homeStack: {
+    // screen: HomeScreen,
+    screen: HomeStack,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
         return <Icon name="home" size={30} color={tintColor} />;
@@ -87,6 +110,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
   },
   offer: {
     screen: OfferScreen,
+    // screen: Cards,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
         return <Icon name="tags" size={25} color={tintColor} />;
@@ -94,11 +118,9 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
       title: `Offer`,
     }
   },
-  drawer: {
-    screen: AppDrawerNavigator,
-  },
   menu: {
-    screen: MenuScreen,
+    screen: DrawerStackNavigator,
+    // screen: MenuScreen,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
         return <Icon name="bars" size={25} color={tintColor} />;
@@ -122,8 +144,8 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
   //     headerTitle: routeName
   //   };
   // },
-  initialRouteName: 'home',
-  order: [ 'notification', 'message', 'home', 'offer', 'menu', 'drawer' ],
+  initialRouteName: 'homeStack',
+  order: [ 'notification', 'message', 'homeStack', 'offer', 'menu' ],
   tabBarOptions: {
     showLabel: false,
     tintColor: '#626262',
@@ -137,9 +159,6 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     // }
   }
 });
-// const SearchStack = createStackNavigator ({
-//   search: SearchScreen
-// })
 
 const InitialStackNavigator = createStackNavigator ({
   AppBottomTabNavigator: AppBottomTabNavigator
@@ -171,13 +190,14 @@ const InitialStackNavigator = createStackNavigator ({
       ),
     }
   }
-})
+});
+
 const AppStackNavigator = createStackNavigator({
   // home: Home,
   InitialStackNavigator,
   cards: Cards,
   search: SearchScreen,
-  creator: CreatorScreen,
+  // creator: CreatorScreen,
 }, {
   headerMode: "none"
 });

@@ -10,42 +10,73 @@ import fonts from './../src/assets/Fonts';
 import CT from '../src/assets/CT';
 
 
-export default class CardComponent extends Component {
-  render() {
+// export default class CardComponent extends Component {
+//   render() {
 
-    const creatorProfile = {
-      "1": require('../src/assets/images/cprofile_2.jpg'),
-      "2": require('../src/assets/images/cprofile_2.jpg'),
-      "3": require('../src/assets/images/cprofile_3.jpg'),
-    }
+//     const creatorProfile = {
+//       "1": require('../src/assets/images/cprofile_2.jpg'),
+//       "2": require('../src/assets/images/cprofile_2.jpg'),
+//       "3": require('../src/assets/images/cprofile_3.jpg'),
+//     }
 
-    return (
-      <Card>
-        <CardItem style={{marginHorizontal: 10, marginVertical: 20, borderWidth: 0 }}>
-          <Left style={{flexDirection: 'column', borderWidth: 0 }}>
-            {/* <Thumbnail square large source={require('../src/assets/images/spidy.jpg')} /> */}
-            <Image source={creatorProfile[this.props.imageSource]} style={styles.profileIcon} />
-             <Image source={images.broShakeLogo} style={styles.broShakeLogo} />
-          </Left>
-          <Body style={{borderWidth: 0, paddingLeft: 20}}> 
-            <Icon name="location-arrow" type="FontAwesome" 
-              style={{ color: "#00d278" ,fontSize: 18 }} >
-              <Text style={styles.distanceText}> 32 m</Text>
-            </Icon>
-            <Text style={styles.locationText}>Atomica</Text>
-            <Text style={styles.cityText}>MELBOURNE</Text>
-            <View style={{borderWidth: 0, paddingTop: 26}}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('creator')}><CT.ReadmoreText/>
-              </TouchableOpacity>
-              </View>
-          </Body>
-        </CardItem>
-      </Card>
-    );
-  }
-}
-
-// export default CardComponent;
+//     return (
+//       <Card>
+//         <CardItem style={{marginHorizontal: 10, marginVertical: 20, borderWidth: 0 }}>
+//           <Left style={{flexDirection: 'column', borderWidth: 0 }}>
+//             {/* <Thumbnail square large source={require('../src/assets/images/spidy.jpg')} /> */}
+//             <Image source={creatorProfile[this.props.imageSource]} style={styles.profileIcon} />
+//              <Image source={images.broShakeLogo} style={styles.broShakeLogo} />
+//           </Left>
+//           <Body style={{borderWidth: 0, paddingLeft: 20}}> 
+//             <Icon name="location-arrow" type="FontAwesome" 
+//               style={{ color: "#00d278" ,fontSize: 18 }} >
+//               <Text style={styles.distanceText}> 32 m</Text>
+//             </Icon>
+//             <Text style={styles.locationText}>Atomica</Text>
+//             <Text style={styles.cityText}>MELBOURNE</Text>
+//             <View style={{paddingTop: 26}}>
+//               <TouchableOpacity 
+//               onPress={() => navigation.navigate('creator')}>
+//                 <CT.ReadmoreText/>
+//               </TouchableOpacity>
+//               </View>
+//           </Body>
+//         </CardItem>
+//       </Card>
+//     );
+//   }
+// }
+const creatorProfile = {
+  "1": require('../src/assets/images/cprofile_2.jpg'),
+  "2": require('../src/assets/images/cprofile_2.jpg'),
+  "3": require('../src/assets/images/cprofile_3.jpg'),
+};
+const CardComponent = ({ navigation }) => (
+  <Card>
+    <CardItem style={{marginHorizontal: 10, marginVertical: 20, borderWidth: 0 }}>
+      <Left style={{flexDirection: 'column', borderWidth: 0 }}>
+        {/* <Thumbnail square large source={require('../src/assets/images/spidy.jpg')} /> */}
+        <Image source={creatorProfile[this.props.imageSource]} style={styles.profileIcon} />
+          <Image source={images.broShakeLogo} style={styles.broShakeLogo} />
+      </Left>
+      <Body style={{borderWidth: 0, paddingLeft: 20}}> 
+        <Icon name="location-arrow" type="FontAwesome" 
+          style={{ color: "#00d278" ,fontSize: 18 }} >
+          <Text style={styles.distanceText}> 32 m</Text>
+        </Icon>
+        <Text style={styles.locationText}>Atomica</Text>
+        <Text style={styles.cityText}>MELBOURNE</Text>
+        <View style={{paddingTop: 26}}>
+          <TouchableOpacity 
+          onPress={() => navigation.navigate('creator')}>
+            <CT.ReadmoreText/>
+          </TouchableOpacity>
+          </View>
+      </Body>
+    </CardItem>
+  </Card>
+);
+export default CardComponent;
 
 const styles = StyleSheet.create({
   distanceText: {
@@ -60,12 +91,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.LarsseitBold,
     fontSize: 16,
   },
-  // readmoreText: {
-  //   color: '#6a6a6a', // TO-EDIT: may need to pick a darker color
-  //   textDecorationLine: 'underline',
-  //   fontFamily: fonts.Larsseit,
-  //   fontSize: 18,
-  // }, 
   profileIcon: {
     resizeMode: 'cover',
      height: 80, 
