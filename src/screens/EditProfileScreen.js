@@ -8,6 +8,7 @@ export default class MenuScreen extends Component {
   render() {
     return(
       <View style={styles.container}>
+        <Text>edit profile scereen</Text>
       </View>
     );
   }
