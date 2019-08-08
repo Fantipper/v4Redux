@@ -17,7 +17,7 @@ export default class CreatorScreen extends Component {
   render() {
     return(
       <View style={styles.container}>
-      <ScrollView>
+        <ScrollView>
           <ImageBackground
             style={styles.profileBackground}
             resizeMode= 'cover'
