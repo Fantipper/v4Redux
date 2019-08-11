@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView, Dimensions, Image, Button } from 'react-native';
 import { ListItem, Body, Content, Card, CardItem } from 'native-base';
+import RadioGroup from 'react-native-radio-buttons-group';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -17,9 +18,9 @@ export default class OfferScreen extends Component {
   render() {
     return(
       <View style={styles.container}>
-        {/* <Text style={styles.welcome}>OfferScreen</Text> */}
-        {/* <Text style={styles.instruction}>This screen show latest offers</Text> */}
-        <ScrollView>
+        <Text style={styles.welcome}>OfferScreen</Text> 
+         <Text style={styles.instruction}>This screen show latest offers</Text>
+        {/* <ScrollView>
           <Content contentContainerStyle={{marginHorizontal: 10}}>
             <View style={styles.receiverContainer}>
               <View style={styles.creatorIconContainer}>
@@ -54,7 +55,7 @@ export default class OfferScreen extends Component {
               </CardItem>
             </Card>
           </Content>
-        </ScrollView>
+        </ScrollView> */}
       </View>
     );
   }

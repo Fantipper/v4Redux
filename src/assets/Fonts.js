@@ -3,8 +3,9 @@
 
 export default fonts = {
   Larsseit: 'Larsseit',
-  LarsseitBold: 'Larsseit-Bold',
+  LarsseitThin: 'Larsseit-Thin',
   LarsseitMedium: 'Larsseit-Medium',
+  LarsseitBold: 'Larsseit-Bold',
   Roboto: 'Roboto-Regular',
   RobotoBold: 'Roboto-Bold',
   

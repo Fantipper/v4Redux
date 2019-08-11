@@ -35,6 +35,8 @@ import HistoryScreen from './src/screens/HistoryScreen';
 import AboutScreen from './src/screens/AboutScreen';
 import TermsScreen from './src/screens/TermsScreen';
 
+import TipSendDetails from './src/screens/TipSendDetails';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { createStore } from 'redux';
@@ -109,7 +111,8 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     }
   },
   offer: {
-    screen: OfferScreen,
+    // screen: OfferScreen,
+    screen: TipSendDetails,
     // screen: Cards,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
