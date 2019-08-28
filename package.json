@@ -6,12 +6,20 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/"
+    ]
+  },
   "dependencies": {
     "emoji-regex": "^8.0.0",
     "native-base": "^2.12.1",
     "react": "16.8.3",
     "react-native": "0.59.3",
     "react-native-gesture-handler": "^1.1.0",
+    "react-native-hr": "^1.1.4",
+    "react-native-radio-buttons-group": "^1.0.7",
+    "react-native-simple-radio-button": "^2.7.3",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.6.1",
     "react-redux": "^6.0.1",
