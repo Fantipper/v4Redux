@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView, Dimensions, Image, Button, TextInput } from 'react-native';
 import { ListItem, Body, Content, Card, CardItem } from 'native-base';
 import RadioGroup from 'react-native-radio-buttons-group';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -13,25 +14,32 @@ import Fonts from '../assets/Fonts';
 import CT from '../assets/CT';
 
 var fullWidth = Dimensions.get('window').width; //full width
-// import { Row } from 'native-base';
 
+var radio_props = [
+  { label: 'param1', value: 0 },
+  { label: 'param2', value: 1 },
+];
 
 export default class TipSendDetails extends Component {
-  state = {
-    data: [
-      { label: '$2' },
-      { label: '$5' },
-      { label: '$10' },
-      { label: '$20' },
-    ],
-  };
 
-  // update state
-  onPress = data => this.setState({ data });
+  constructor () {
+    super()
+    this.state = {
+      tipVaule1: [
+        { label: '$2', value: 0 }, 
+        { label: '$5', value: 1 },
+        { label: '$10', value: 2 },
+        { label: '$20', value: 3 },
+      ],
+      value1: 0,
+      value1Index: 0,
+    }
+  }
+  handleOnEndEdit() {
+
+  }
 
   render() {
-    let selectedRadioButton = this.state.data.find(e => e.selected == true);
-    selectedRadioButton = selectedRadioButton ? selectedRadioButton.value : this.state.data[0].label;
     return(
       <View style={styles.container}>
         <ScrollView showsHorizontalScrollIndicator={false}>
@@ -56,19 +64,61 @@ export default class TipSendDetails extends Component {
               // flex: 1
               }}
             >
-              <View style={{borderColor: 'red', borderWidth: 2}}>
+              <View style={{}}>
                 <Text style={styles.subtitleText}>How much would you like to tip?</Text>
               </View>
-              <View style={{borderColor: 'red', borderWidth: 2}}>
-                <RadioGroup radioButtons={this.state.data} onPress={this.onPress} flexDirection='row' />
+              <View style={{marginVertical: 20}}>
+                <RadioForm formHorizontal={true} animation={true} ref="radioForm" >
+                  {/* loop through the array of options to style radio buttons */}
+                  {this.state.tipVaule1.map((obj, i) => {
+                    var onPress = (value, index) => {
+                      this.setState({
+                        value1: value,
+                        value1Index: index
+                      })
+                    }
+                    return(
+                      <RadioButton labelHorizontal={true} key={i} >
+                        <RadioButtonInput
+                          obj={obj}
+                          index={i}
+                          isSelected={this.state.value1Index === i}
+                          onPress={onPress}
+                          buttonInnerColor={'#00d278'}
+                          buttonOuterColor={'#d6d6d6'}
+                          buttonSize={12}
+                          buttonOuterSize={28}
+                          // buttonStyle={{}}
+                          buttonWrapStyle={{marginRight: 10}}
+                        />
+                        <RadioButtonLabel 
+                          obj={obj}
+                          index={i}
+                          onPress={onPress}
+                          labelStyle={{
+                            fontFamily: fonts.Larsseit, 
+                            fontSize: 20,
+                            color: '#1a1a1a',
+                          }}
+                          labelWrapStyle={{marginRight: 22}}
+                        />
+                      </RadioButton>
+                    )
+                  })}
+                </RadioForm>
+              </View>
+              <View style={{borderColor: 'red', borderWidth: 0}}>
                 <View>
                   <TextInput 
-                    style={{ fontFamily: fonts.LarsseitBold, fontSize: 26, color: '#00d278', borderColor: '#00d278', borderWidth: 2, paddingVertical: 18, borderRadius: 8, marginVertical: 20, backgroundColor: '#ffffff', paddingHorizontal: 20, width: fullWidth - 50}} 
+                    style={{ fontFamily: fonts.LarsseitBold, fontSize: 26, color: '#00d278', borderColor: '#00d278', backgroundColor: '#ffffff', borderWidth: 2, paddingVertical: 20, borderRadius: 8, marginBottom: 20, paddingHorizontal: 20, width: fullWidth - 50}} 
                     keyboardType='decimal-pad' 
-                    value={selectedRadioButton} 
+                    onChangeText={(text) => this.setState({input: text})}
+                    // onEndEditing={() => this.refs.radioForm.updateIsActiveIndex(0)}
+                    defaultValue={this.state.tipVaule1[this.state.value1Index].label}
+                    // value={}
                   />
                   <TextInput 
-                    style={{ fontFamily: fonts.LarsseitThin, fontSize: 16, color: '#000000', borderColor: '#d6d6d6', borderWidth: 2, paddingVertical: 18, borderRadius: 8, paddingHorizontal: 20, width: fullWidth - 50}} 
+                    style={{ fontFamily: fonts.LarsseitThin, fontSize: 16, color: '#000000', borderColor: '#d6d6d6', backgroundColor: '#ffffff', borderWidth: 2, borderRadius: 8, marginBottom: 20, paddingHorizontal: 20, width: fullWidth - 50, height: 120}} 
                     keyboardType='default' 
                     multiline={true} 
                     placeholder='Leave a message of support (optional)...' 
@@ -80,7 +130,6 @@ export default class TipSendDetails extends Component {
                 <View style={{paddingVertical: 30, borderBottomColor: '#d6d6d6',  borderBottomWidth: 1, borderBottomEndRadius: 3}}>
                   <Text style={styles.subtitleText2}>Payment Details</Text>
                   <View>
-                    <RadioGroup radioButtons={this.state.data} onPress={this.onPress} flexDirection='row' />
                     <TextInput style={{borderColor: '#d6d6d6', borderWidth: 2, borderRadius: 8, color: '#00d278', marginVertical: 20, backgroundColor: '#ffffff' }} keyboardType='default' placeholder='Name on card' placeholderTextColor='#6a6a6a'/>
                     <TextInput style={{borderColor: '#d6d6d6', borderWidth: 2, paddingVertical: 18, borderRadius: 8, fontSize: 14 }} keyboardType='decimal-pad' multiline={true} placeholder='Card number' placeholderTextColor='#6a6a6a' />
                   </View>

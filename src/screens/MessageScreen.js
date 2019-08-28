@@ -1,8 +1,18 @@
 /* MessageScreen.js */
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 export default class MessageScreen extends Component {
+  // constructor() {
+  //   this.state = {
+  //     dataSet: [
+  //       { label: 'param1', value: 0 },
+  //       { label: 'param2', value: 1 },
+  //       { label: 'param3', value: 2 },
+  //     ]
+  //   }
+  // }
   render() {
     return(
       <View style={styles.container}>
@@ -16,6 +26,10 @@ export default class MessageScreen extends Component {
           }}>
             COMING SOON!
         </Text>
+        <View>
+          {/* <RadioForm /> */}
+          {/* <Text>you pick +{this.state.dataSet[]}</Text> */}
+        </View>
       </View>
     );
   }
