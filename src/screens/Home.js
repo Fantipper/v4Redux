@@ -1,15 +1,11 @@
 /* Home.js */
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, ScrollView, TouchableOpacity } from 'react-native';
-import { Content } from 'native-base';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import fonts from '../assets/Fonts';
-import CT from '../assets/CT';
 
 import SplashScreen from './SplashScreen';
 import Cards from './Cards';
-import CardComponent from '../../Components/CardComponent';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
 // https://expo.github.io/vector-icons/
 
 // https://www.robinwieruch.de/react-warning-cant-call-setstate-on-an-unmounted-component/

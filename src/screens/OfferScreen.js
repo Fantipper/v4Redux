@@ -1,14 +1,6 @@
 /* OfferScreen.js */
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView, Dimensions, Image, Button } from 'react-native';
-import { ListItem, Body, Content, Card, CardItem } from 'native-base';
-import RadioGroup from 'react-native-radio-buttons-group';
-
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-import images from '../assets/Images';
-import Fonts from '../assets/Fonts';
-import CT from '../assets/CT';
 
 var fullWidth = Dimensions.get('window').width; //full width
 // import { Row } from 'native-base';

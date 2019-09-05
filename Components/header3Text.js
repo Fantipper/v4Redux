@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import fonts from '../src/assets/Fonts';
 
-const header3Text = props => (
+const Header3Text = props => (
   <Text {...props} style={[styles.header3Texts, props.style]}>
   {props.children}
 </Text>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default header3Text;
+export default Header3Text;

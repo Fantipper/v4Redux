@@ -5,7 +5,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import fonts from '../src/assets/Fonts';
 
-const readmoreText = props => (
+const ReadmoreText = props => (
   <Text style={styles.readmoreTexts}>{props.children}Read more ...</Text>
 );
 
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default readmoreText;
+export default ReadmoreText;

@@ -5,7 +5,6 @@ import { List, ListItem, Content, Left, Thumbnail, Body, Right } from 'native-ba
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import images from '../assets/Images';
-import Fonts from '../assets/Fonts';
 
 export default class MenuScreen extends Component {
   render() {

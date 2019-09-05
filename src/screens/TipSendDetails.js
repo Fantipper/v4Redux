@@ -7,11 +7,6 @@ import { ListItem, Body, Content, Card, CardItem } from 'native-base';
 import RadioGroup from 'react-native-radio-buttons-group';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-import images from '../assets/Images';
-import Fonts from '../assets/Fonts';
-import CT from '../assets/CT';
 
 var fullWidth = Dimensions.get('window').width; //full width
 
