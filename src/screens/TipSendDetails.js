@@ -3,10 +3,9 @@
 
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView, Dimensions, Image, Button, TextInput } from 'react-native';
-import { ListItem, Body, Content, Card, CardItem } from 'native-base';
+import { ListItem, Body, Content, Card, CardItem, Picker } from 'native-base';
 import RadioGroup from 'react-native-radio-buttons-group';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-
 
 var fullWidth = Dimensions.get('window').width; //full width
 
@@ -20,6 +19,8 @@ export default class TipSendDetails extends Component {
   constructor () {
     super()
     this.state = {
+      tipAmountMsg: "How much would you like to tip?",
+      pickerSelection: "default value",
       tipVaule1: [
         { label: '$2', value: 0 }, 
         { label: '$5', value: 1 },
@@ -60,7 +61,7 @@ export default class TipSendDetails extends Component {
               }}
             >
               <View style={{}}>
-                <Text style={styles.subtitleText}>How much would you like to tip?</Text>
+                <Text style={styles.subtitleText}>{this.state.tipAmountMsg}</Text>
               </View>
               <View style={{marginVertical: 20}}>
                 <RadioForm formHorizontal={true} animation={true} ref="radioForm" >
@@ -102,10 +103,10 @@ export default class TipSendDetails extends Component {
                   })}
                 </RadioForm>
               </View>
-              <View style={{borderColor: 'red', borderWidth: 0}}>
+              <View>
                 <View>
                   <TextInput 
-                    style={{ fontFamily: fonts.LarsseitBold, fontSize: 26, color: '#00d278', borderColor: '#00d278', backgroundColor: '#ffffff', borderWidth: 2, paddingVertical: 20, borderRadius: 8, marginBottom: 20, paddingHorizontal: 20, width: fullWidth - 50}} 
+                    style={[styles.inputBoxBase, styles.tipAmountInputBox]}
                     keyboardType='decimal-pad' 
                     onChangeText={(text) => this.setState({input: text})}
                     // onEndEditing={() => this.refs.radioForm.updateIsActiveIndex(0)}
@@ -113,21 +114,50 @@ export default class TipSendDetails extends Component {
                     // value={}
                   />
                   <TextInput 
-                    style={{ fontFamily: fonts.LarsseitThin, fontSize: 16, color: '#000000', borderColor: '#d6d6d6', backgroundColor: '#ffffff', borderWidth: 2, borderRadius: 8, marginBottom: 20, paddingHorizontal: 20, width: fullWidth - 50, height: 120}} 
+                    style={[styles.inputBoxBase, styles.messageInputBox]}
                     keyboardType='default' 
                     multiline={true} 
                     placeholder='Leave a message of support (optional)...' 
-                    placeholderTextColor='#6a6a6a' 
-                  />
+                    placeholderTextColor='#6a6a6a' />
                 </View>
               </View>
               </View>
                 <View style={{paddingVertical: 30, borderBottomColor: '#d6d6d6',  borderBottomWidth: 1, borderBottomEndRadius: 3}}>
                   <Text style={styles.subtitleText2}>Payment Details</Text>
                   <View>
-                    <TextInput style={{borderColor: '#d6d6d6', borderWidth: 2, borderRadius: 8, color: '#00d278', marginVertical: 20, backgroundColor: '#ffffff' }} keyboardType='default' placeholder='Name on card' placeholderTextColor='#6a6a6a'/>
-                    <TextInput style={{borderColor: '#d6d6d6', borderWidth: 2, paddingVertical: 18, borderRadius: 8, fontSize: 14 }} keyboardType='decimal-pad' multiline={true} placeholder='Card number' placeholderTextColor='#6a6a6a' />
+                    <TextInput 
+                      style={[styles.inputBoxBase, styles.cardDetailsInputBox]} 
+                      keyboardType='default' 
+                      placeholder='Name on card' 
+                      placeholderTextColor='#6a6a6a'/>
+                    <TextInput 
+                      style={[styles.inputBoxBase, styles.cardDetailsInputBox]} 
+                      keyboardType='numeric' 
+                      placeholder='Card number' 
+                      placeholderTextColor='#6a6a6a' />
                   </View>
+                  <View style={{flexDirection: 'row'}}>
+                    <TextInput 
+                      style={[styles.inputBoxBase, styles.cardCVCInputBox]} 
+                      keyboardType='numeric' 
+                      placeholder='CVC' 
+                      maxLength={3}
+                      placeholderTextColor='#6a6a6a'/>
+                      <Picker
+                        style={[styles.inputBoxBase, styles.pickerBox]}
+                        selectedValue={this.state.pickerSelection}
+                        onValueChange={(itemValue, itemIndex) => this.setState({pickerSelection: itemValue})}
+                        >
+                        <Picker.Item label='Month' value=''/>
+                        <Picker.Item label='Feb' value='Feb'/>
+                      </Picker>
+                      <Picker
+                        pickerStyleType={[styles.inputBoxBase, styles.pickerBox]}>
+                        <Picker.Item label='Jen' value='Jen'/>
+                        <Picker.Item label='Feb' value='Feb'/>
+                      </Picker>
+                  </View>
+                  <Text>you selected: {this.state.pickerSelection}</Text>
                 </View>
                 <View style={{paddingVertical: 30, borderBottomColor: '#d6d6d6',  borderBottomWidth: 1, borderBottomEndRadius: 3}}>
                   <Button title="Send $5 fantip!" color='#00d278'></Button>
@@ -183,6 +213,20 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     textTransform: 'uppercase'
   },
+  tipAmountInputBox: {
+    fontFamily: fonts.LarsseitBold, 
+    fontSize: 26, 
+    color: '#00d278', 
+    borderColor: '#00d278', 
+    paddingVertical: 20, 
+    marginBottom: 10, 
+  },
+  messageInputBox: {
+    height: 120,
+    textAlignVertical:'top', 
+    paddingVertical: 20, 
+    marginBottom: 10, 
+  },
   subtitleText2: { // payment details
     fontFamily: fonts.LarsseitBold,
     fontSize: 16,
@@ -190,5 +234,25 @@ const styles = StyleSheet.create({
     color: '#8c8c8c',
     lineHeight: 30,
     textTransform: 'uppercase'
+  },
+  cardDetailsInputBox: {
+    // marginVertical: 10, // no need anything atm wait until cvc
+  },
+  cardCVCInputBox: {
+    width: 100,
+  },
+  pickerBox: {
+    width: 100,
+  },
+  inputBoxBase: {
+    width: fullWidth - 50, 
+    fontFamily: fonts.Larsseit, 
+    fontSize: 18, 
+    borderColor: '#d6d6d6', 
+    borderWidth: 2, 
+    borderRadius: 8, 
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 20,
+    marginVertical: 10, 
   }
 });
