@@ -12,13 +12,10 @@
   * handshard logo + default profile pic
   */
 import React, { Component } from 'react';
-import { 
-  Platform, 
-  StyleSheet, 
-  Text, 
-  View, Image
-} from 'react-native';
+import { Image } from 'react-native';
 import { createAppContainer, createStackNavigator, createBottomTabNavigator, createDrawerNavigator } from 'react-navigation';
+
+import AuthLoading from './src/screens/AuthLoading';
 
 import HomeScreen from './src/screens/Home';
 import Cards from './src/screens/Cards';
@@ -40,17 +37,11 @@ import TipSendDetails from './src/screens/TipSendDetails';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { createStore } from 'redux';
+
 // const reducer = () => {
 
 // }
 // const store = createStore(reducer);
-export default class App extends Component {
-  render() {
-    return (
-      <AppContainer />
-    );
-  }
-}
 const HomeStack = createStackNavigator ({
   home: {
     screen: HomeScreen,
@@ -95,7 +86,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
         // const iconName = `calendar${focused ? '' : '-outline'}`;
-        return <Icon name="bell" size={25} color={tintColor} />;
+        return <Icon name='bell' size={25} color={tintColor} />;
       },
       title: `Notification`,
     }
@@ -105,7 +96,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     screen: HomeStack,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
-        return <Icon name="home" size={30} color={tintColor} />;
+        return <Icon name='home' size={30} color={tintColor} />;
       },
       title: `Home`,
     }
@@ -116,7 +107,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     // screen: Cards,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
-        return <Icon name="tags" size={25} color={tintColor} />;
+        return <Icon name='tags' size={25} color={tintColor} />;
       },
       title: `Offer`,
     }
@@ -126,7 +117,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     // screen: MenuScreen,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
-        return <Icon name="bars" size={25} color={tintColor} />;
+        return <Icon name='bars' size={25} color={tintColor} />;
       },
       title: `Menu`,
     }
@@ -135,7 +126,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     screen: MessageScreen,
     navigationOptions:{
       tabBarIcon: ({ focused, tintColor }) => {
-        return <Icon name="envelope" size={25} color={tintColor} />;
+        return <Icon name='envelope' size={25} color={tintColor} />;
       },
       title: `Message`,
     }
@@ -156,7 +147,7 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
     style : {
       backgroundColor: '#414042',
     },
-    // TO-ADD-HERE: border line/ indicator(?)
+    // TODO: border line/ indicator(?)
     // indicatorStyle: {
     //   backgroundColor: 'red'
     // }
@@ -166,8 +157,8 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
 const InitialStackNavigator = createStackNavigator ({
   AppBottomTabNavigator: AppBottomTabNavigator
 }, {
-  headerMode: "float",
-  headerLayoutPreset: "center",
+  headerMode: 'float',
+  headerLayoutPreset: 'center',
   defaultNavigationOptions: ({ navigation }) =>  {
     return {
       headerTitle: (
@@ -197,12 +188,21 @@ const InitialStackNavigator = createStackNavigator ({
 
 const AppStackNavigator = createStackNavigator({
   // home: Home,
-  InitialStackNavigator,
+  authLoading: AuthLoading,
+  app: InitialStackNavigator,
   cards: Cards,
   search: SearchScreen,
   // creator: CreatorScreen,
 }, {
-  headerMode: "none"
+  headerMode: 'none'
 });
 
 const AppContainer = createAppContainer(AppStackNavigator);
+
+export default class App extends Component {
+  render() {
+    return (
+      <AppContainer />
+    );
+  }
+}
