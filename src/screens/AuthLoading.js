@@ -1,7 +1,7 @@
 /* AuthLoading.js */
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { View } from 'react-native';
 import SplashScreen from './SplashScreen';
 
 class AuthLoading extends Component {
@@ -26,8 +26,8 @@ class AuthLoading extends Component {
     const data = await this.performTimeConsumingTask();
 
     if (data !== null) {
-      // this.setState({ isLoading: false });
-      this.props.navigation.navigate('app');  //TODO: navigate to auth
+      this.setState({ isLoading: false });
+      this.props.navigation.navigate('auth');  //TODO: navigate to auth
     }
   }
 
@@ -36,19 +36,10 @@ class AuthLoading extends Component {
       return <SplashScreen />
     }
     return (
-      <View style={styles.container}>
-        <Text>Some text</Text>
+      <View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-});
 
 export default AuthLoading;
