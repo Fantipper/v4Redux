@@ -22,7 +22,7 @@ export default class OfferScreen extends Component {
               </View>
               <View style={styles.creatorNameContainer}>
                 <Text style={styles.creatorName}>
-                    Send a FanTip to {"\n"}DJ Ash Millott
+                    Send a FanTip to {'\n'}DJ Ash Millott
                 </Text>
               </View>
             </View>
@@ -42,7 +42,7 @@ export default class OfferScreen extends Component {
             <Card transparent style={styles.cardWithoutBottomBorder}>
               <CardItem>
                 <Body style={styles.bodyCenterContainer}>
-                  <Button title="Send $5 fantip!"></Button>
+                  <Button title='Send $5 fantip!'></Button>
                 </Body>
               </CardItem>
             </Card>

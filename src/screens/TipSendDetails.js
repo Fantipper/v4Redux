@@ -19,8 +19,8 @@ export default class TipSendDetails extends Component {
   constructor () {
     super()
     this.state = {
-      tipAmountMsg: "How much would you like to tip?",
-      pickerSelection: "default value",
+      tipAmountMsg: 'How much would you like to tip?',
+      pickerSelection: 'default value',
       tipVaule1: [
         { label: '$2', value: 0 }, 
         { label: '$5', value: 1 },
@@ -48,7 +48,7 @@ export default class TipSendDetails extends Component {
               </View>
               <View style={styles.creatorNameContainer}>
                 <Text style={styles.creatorName}>
-                    Send a FanTip to {"\n"}DJ Ash Millott
+                    Send a FanTip to {'\n'}DJ Ash Millott
                 </Text>
               </View>
             </View>
@@ -64,7 +64,7 @@ export default class TipSendDetails extends Component {
                 <Text style={styles.subtitleText}>{this.state.tipAmountMsg}</Text>
               </View>
               <View style={{marginVertical: 20}}>
-                <RadioForm formHorizontal={true} animation={true} ref="radioForm" >
+                <RadioForm formHorizontal={true} animation={true} ref='radioForm' >
                   {/* loop through the array of options to style radio buttons */}
                   {this.state.tipVaule1.map((obj, i) => {
                     var onPress = (value, index) => {
@@ -160,7 +160,7 @@ export default class TipSendDetails extends Component {
                   <Text>you selected: {this.state.pickerSelection}</Text>
                 </View>
                 <View style={{paddingVertical: 30, borderBottomColor: '#d6d6d6',  borderBottomWidth: 1, borderBottomEndRadius: 3}}>
-                  <Button title="Send $5 fantip!" color='#00d278'></Button>
+                  <Button title='Send $5 fantip!' color='#00d278'></Button>
                 </View>
           </Content>
         </ScrollView>

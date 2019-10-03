@@ -7,8 +7,8 @@ export default class SearchScreen extends Component {
     headerRight: (
       <Button
       onPress={() => alert('Hello from header button!')}
-      title="Header button"
-      color="#fff"
+      title='Header button'
+      color='#fff'
     />
     ),
     // header: (navigation) => ({
