@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Larsseit,
     fontSize: 18,
     color: '#6a6a6a', // TO-EDIT: may need to pick a darker color
-    textDecorationLine: 'underline',
+    textDecorationLine: 'underline'
   }
 });
 

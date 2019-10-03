@@ -5,8 +5,8 @@ import fonts from '../src/assets/Fonts';
 
 const Header3Text = props => (
   <Text {...props} style={[styles.header3Texts, props.style]}>
-  {props.children}
-</Text>
+    {props.children}
+  </Text>
 );
 
 const styles = StyleSheet.create({
