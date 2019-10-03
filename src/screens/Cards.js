@@ -19,8 +19,8 @@ class Cards extends Component {
             <Image source={images.broShakeLogo} style={styles.broShakeLogo} />
           </View>
           <View style={{paddingLeft: 40, flexDirection: 'column'}}>
-        <Icon name="location-arrow" type="FontAwesome" 
-          style={{ color: "#00d278" ,fontSize: 18 }} >
+        <Icon name='location-arrow' type='FontAwesome' 
+          style={{ color: '#00d278' ,fontSize: 18 }} >
           <Text style={styles.distanceText}> {this.props.distance} m</Text>
         </Icon>
         <Text style={styles.locationText}>Atomica</Text>
