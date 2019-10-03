@@ -16,6 +16,7 @@ import { Image } from 'react-native';
 import { createAppContainer, createStackNavigator, createBottomTabNavigator, createDrawerNavigator } from 'react-navigation';
 
 import AuthLoading from './src/screens/AuthLoading';
+import AuthScreen from './src/screens/AuthScreen';
 
 import HomeScreen from './src/screens/Home';
 import Cards from './src/screens/Cards';
@@ -35,6 +36,7 @@ import TermsScreen from './src/screens/TermsScreen';
 import TipSendDetails from './src/screens/TipSendDetails';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import images from './src/assets/Images';
 
 import { createStore } from 'redux';
 
@@ -163,13 +165,13 @@ const InitialStackNavigator = createStackNavigator ({
     return {
       headerTitle: (
         <Image
+          source={images.fanTipperLogo}
           style={{ 
             alignSelf: 'center', 
             resizeMode: 'contain',
             height: 46, 
             width: 160
-          }} 
-          source={require('./src/assets/images/Logo_Green.png')}
+          }}
         />
       ),
       headerRight: (
@@ -189,6 +191,7 @@ const InitialStackNavigator = createStackNavigator ({
 const AppStackNavigator = createStackNavigator({
   // home: Home,
   authLoading: AuthLoading,
+  auth: AuthScreen,
   app: InitialStackNavigator,
   cards: Cards,
   search: SearchScreen,
