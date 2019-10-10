@@ -17,6 +17,8 @@ import { createAppContainer, createStackNavigator, createBottomTabNavigator, cre
 
 import AuthLoading from './src/screens/AuthLoading';
 import AuthScreen from './src/screens/AuthScreen';
+import SignInScreen from './src/screens/SignInScreen';
+import RegisterScreen from './src/screens/RegisterScreen';
 
 import HomeScreen from './src/screens/Home';
 import Cards from './src/screens/Cards';
@@ -82,6 +84,7 @@ const DrawerStackNavigator = createStackNavigator ({
   defaultNavigationOptions: {
   }
 });
+
 const AppBottomTabNavigator = createBottomTabNavigator ({
   notification: {
     screen: NotificationScreen,
@@ -156,6 +159,20 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
   }
 });
 
+const AuthStack = createStackNavigator({
+  AuthScreen: {
+    screen: AuthScreen
+  },
+  SignIn: {
+    screen: SignInScreen
+  },
+  Register: {
+    screen: RegisterScreen
+  }
+},{
+  headerMode: 'none',
+});
+
 const InitialStackNavigator = createStackNavigator ({
   AppBottomTabNavigator: AppBottomTabNavigator
 }, {
@@ -164,6 +181,7 @@ const InitialStackNavigator = createStackNavigator ({
   defaultNavigationOptions: ({ navigation }) =>  {
     return {
       headerTitle: (
+        //FIXME: Add navigation back to home screen
         <Image
           source={images.fanTipperLogo}
           style={{ 
@@ -191,7 +209,7 @@ const InitialStackNavigator = createStackNavigator ({
 const AppStackNavigator = createStackNavigator({
   // home: Home,
   authLoading: AuthLoading,
-  auth: AuthScreen,
+  auth: AuthStack,
   app: InitialStackNavigator,
   cards: Cards,
   search: SearchScreen,

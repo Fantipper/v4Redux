@@ -27,7 +27,7 @@ class AuthLoading extends Component {
 
     if (data !== null) {
       this.setState({ isLoading: false });
-      this.props.navigation.navigate('auth');  //TODO: navigate to auth
+      this.props.navigation.navigate('auth');  //TODO: navigate to auth | app
     }
   }
 
