@@ -22,7 +22,7 @@ export default class AuthScreen extends Component {
         <Image source={images.fanTipperLogo} style={styles.logo}/>
         <Text style={styles.promptText}>The destination for giving {'\n'}and receiving tips online.</Text>
         <View style={styles.socialBtnsContainer}>
-          <View style={[styles.socialBtns, styles.fbBtn]}>
+          <View style={[styles.btn_social, styles.btn_fb]}>
             <FontAwesome.Button 
               name='facebook-square'
               size={30}
@@ -35,7 +35,7 @@ export default class AuthScreen extends Component {
             <Text style={styles.btnText}>continue with facebook</Text>
             </FontAwesome.Button>
           </View>
-          <View style={styles.socialBtns}>
+          <View style={styles.btn_social}>
             <FontAwesome.Button 
               name='google'
               size={30}
@@ -51,7 +51,7 @@ export default class AuthScreen extends Component {
           <Text style={styles.instructions}>No automated posts</Text>
         </View>
         <View style={styles.localBtnsContainer}>
-		      <View style={styles.signRegBtn}>
+		      <View style={styles.btn_signReg}>
 		        <FontAwesome.Button 
 		            name='unlock-alt'
 		            size={22}
@@ -62,7 +62,7 @@ export default class AuthScreen extends Component {
 		          <Text style={styles.btnText}>sign in</Text>
 		        </FontAwesome.Button>
 	        </View>
-	        <View style={styles.signRegBtn}>
+	        <View style={styles.btn_signReg}>
 		        <FontAwesome.Button 
 		            name='plus'
 		            size={22}
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 50
   },
-  socialBtns: {
+  btn_social: {
     borderColor: '#ffffff', 
     borderWidth: 3, 
     borderRadius: 12,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     marginVertical: 6
   },
-  fbBtn: {
+  btn_fb: {
     borderColor: '#3b5998'
   },
 	localBtnsContainer: {
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 		marginVertical: 26
 	},
-	signRegBtn: {
+	btn_signReg: {
 		backgroundColor: 'transparent',
 		borderWidth: 3,
 		borderRadius: 12,
