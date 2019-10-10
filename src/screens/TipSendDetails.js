@@ -44,6 +44,7 @@ export default class TipSendDetails extends Component {
               <View style={styles.creatorIconContainer}>
                 <Image
                   style={styles.creatorIcon}
+                  //FIXME:
                   source={require('../assets/images/userA/861.jpg')}/>
               </View>
               <View style={styles.creatorNameContainer}>

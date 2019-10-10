@@ -3,13 +3,14 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, } from 'react-native';
+import images from '../assets/Images';
 
 class SplashScreen extends Component {
 	render() {
     return (
       <View style={styles.container}>
 				<Image
-					source={require('./../assets/images/00-AppSplash.jpg')}
+					source={images.appSplashBG}
 					style={styles.backgroundImage}
 				/>
       </View>
