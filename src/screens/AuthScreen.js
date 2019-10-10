@@ -1,7 +1,7 @@
 /* AuthScreen.js */
 
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image, ImageBackground } from 'react-native';
 import fonts from '../assets/Fonts';
 import images from '../assets/Images';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -9,42 +9,55 @@ import TermsFooter from '../../Components/TermsFooter';
 var fullWidth = Dimensions.get('window').width; //full width
 
 export default class AuthScreen extends Component {
+
+  _onPressSignIn() {
+    this.navigation.navigate('SignIn');
+  }
   render() {
     return (
-      <View style={styles.container}>
+      <ImageBackground
+        source={images.appSignInBG}
+        style={styles.backgroundImage}
+      >
         <Image source={images.fanTipperLogo} style={styles.logo}/>
         <Text style={styles.promptText}>The destination for giving {'\n'}and receiving tips online.</Text>
-        <View style={styles.socialContBtn}>
-          <FontAwesome.Button 
-            name='facebook'
-            size={22}
-            // onPress={this._fbAuth}
-            backgroundColor='transparent'
-            paddingHorizontal={18}
-            >
-           <Text style={styles.btnText}>continue with facebook</Text>
-          </FontAwesome.Button>
+        <View style={styles.socialBtnsContainer}>
+          <View style={[styles.socialBtns, styles.fbBtn]}>
+            <FontAwesome.Button 
+              name='facebook-square'
+              size={30}
+              backgroundColor='transparent'
+              paddingHorizontal={18}
+              iconStyle={{marginRight:10}}
+              style={{marginHorizontal: 10}}
+              // onPress={this._fbAuth}
+              >
+            <Text style={styles.btnText}>continue with facebook</Text>
+            </FontAwesome.Button>
+          </View>
+          <View style={styles.socialBtns}>
+            <FontAwesome.Button 
+              name='google'
+              size={30}
+              backgroundColor='transparent'
+              paddingHorizontal={18}
+              iconStyle={{marginRight:10}}
+              style={{marginHorizontal: 10}}
+              // onPress={this._fbAuth}
+              >
+            <Text style={styles.btnText}>continue with google</Text>
+            </FontAwesome.Button>
+          </View>
+          <Text style={styles.instructions}>No automated posts</Text>
         </View>
-        <View style={styles.socialContBtn}>
-          <FontAwesome.Button 
-            name='google'
-            size={22}
-            // onPress={this._fbAuth}
-            backgroundColor='transparent'
-            paddingHorizontal={18}
-            >
-           <Text style={styles.btnText}>continue with google</Text>
-          </FontAwesome.Button>
-        </View>
-        <Text style={styles.noteText}>No automated posts</Text>
-        <View style={styles.bottomBtnsContainer}>
+        <View style={styles.localBtnsContainer}>
 		      <View style={styles.signRegBtn}>
 		        <FontAwesome.Button 
 		            name='unlock-alt'
 		            size={22}
-		            // onPress={this._fbAuth}
 		            backgroundColor='transparent'
-		            paddingHorizontal={18}
+                paddingHorizontal={18}
+                onPress={() => this.props.navigation.navigate('SignIn')}                
 		            >
 		          <Text style={styles.btnText}>sign in</Text>
 		        </FontAwesome.Button>
@@ -55,24 +68,27 @@ export default class AuthScreen extends Component {
 		            size={22}
 		            backgroundColor='transparent'
 		            paddingHorizontal={18}
+                onPress={() => this.props.navigation.navigate('Register')}                
 		            >
 		          <Text style={styles.btnText}>register</Text>
 		        </FontAwesome.Button>
 	        </View>
       	</View>
       	<TermsFooter />
-      </View>
+      </ImageBackground>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-		backgroundColor: '#303236',
+  backgroundImage: {
 		flex: 1,
-		alignItems: 'center',
+		width: '100%', 
+    height: '100%',
+    alignItems: 'center',
 		justifyContent: 'center'
-  },
+		//TODO: the size needed to rescale after testing on other device
+	},
   logo: {
     alignSelf: 'center', 
     resizeMode: 'contain',
@@ -84,27 +100,32 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     lineHeight: 26
   },
-  noteText: {
-    color: '#ffffff'
+  instructions: {
+    fontFamily: fonts.Larsseit,
+		fontSize: 16,
+		color: '#939393',
+		lineHeight: 26
   },
-  socialContBtn: {
+  socialBtnsContainer: {
+    alignItems: 'center',
+    marginVertical: 50
+  },
+  socialBtns: {
     borderColor: '#ffffff', 
     borderWidth: 3, 
     borderRadius: 12,
     width: fullWidth-20,
-    paddingVertical: 8,
+    paddingVertical: 6,
     marginVertical: 6
   },
-	bottomBtnsContainer: {
+  fbBtn: {
+    borderColor: '#3b5998'
+  },
+	localBtnsContainer: {
 		alignItems: 'center',
 		flexDirection: 'row',
     justifyContent: 'center',
-    borderColor: '#ffffff',
-    // borderWidth: 2,
-    // marginVertical: 10,
-		// marginHorizontal: 20,
-		marginVertical: 20,
-		// paddingHorizontal: 20,
+		marginVertical: 26
 	},
 	signRegBtn: {
 		backgroundColor: 'transparent',
@@ -113,25 +134,16 @@ const styles = StyleSheet.create({
 		borderColor: '#ffffff',
 		width: fullWidth/2-40,
 		height: 60,
-		// paddingHorizontal: 20,
-    marginHorizontal: 16,
-    // alignItems: 'center',
-    justifyContent: 'center',
-	},
-	registerBtn: {
-		backgroundColor: 'transparent',
-		borderWidth: 4,
-		borderRadius: 12,
-		borderColor: '#ffffff',
-		width: fullWidth/2-20,
-		height: 70,
-    marginHorizontal: 16,
+    marginHorizontal: 12,
+    alignItems: 'center',
+    justifyContent: 'center'
 	},
 	btnText: {
 		fontFamily: fonts.LarsseitBold,
     fontSize: 16,
     color: '#ffffff',
     letterSpacing: 3,
+    marginLeft: 10,
     textTransform: 'uppercase'
 	}
 })
