@@ -11,11 +11,11 @@ class TermsFooter extends Component {
 				<Text style={styles.instructions}>By signing up, you agree to FanTipper's</Text>
 					<View style={styles.footerBtnCont}>
 						<TouchableOpacity>
-							<Text style={[styles.instructions, styles.footerBtn]}>T&C</Text>
+							<Text style={[styles.instructions, styles.instructionsLinks]}>T&C</Text>
 						</TouchableOpacity>
 						<Text style={styles.instructions}>'s and </Text>
 						<TouchableOpacity>
-							<Text style={[styles.instructions, styles.footerBtn]}>Privacy Policy</Text>
+							<Text style={[styles.instructions, styles.instructionsLinks]}>Privacy Policy</Text>
 						</TouchableOpacity>
 						<Text style={styles.instructions}>.</Text>
 					</View>
@@ -27,6 +27,7 @@ class TermsFooter extends Component {
 const styles = StyleSheet.create({
 	footerTextCont: {
 		alignItems: 'center',
+		marginVertical: 20
 	},
 	footerBtnCont: {
 		flexDirection: 'row',
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
 		color: '#939393',
 		lineHeight: 26
 	},
-	footerBtn: {
+	instructionsLinks: {
 		textDecorationLine: 'underline',
 	},
 });
