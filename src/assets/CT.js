@@ -1,9 +1,9 @@
 /* CT.js */
-/* Controls all custom text from one file */
-import ButtonText from '../../Components/buttonText';
-import MainText from '../../Components/mainText';
-import Header3Text from '../../Components/header3Text';
-import ReadmoreText from '../../Components/readmoreText';
+/* Controls all custom text in one file */
+import ButtonText from '../../Components/ButtonText';
+import MainText from '../../Components/MainText';
+import Header3Text from '../../Components/Header3';
+import ReadmoreText from '../../Components/ReadmoreCustom';
 
 export default CT = {
   Header3Text,

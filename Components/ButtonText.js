@@ -2,14 +2,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import fonts from '../src/assets/Fonts';
 
-// const AllTexts = {
-//   // export default AllTexts = {
-//   ButtonText,
-//   MainText,
-// };
-
-const buttonText = props => (
-  // <Text style={styles.mainText}>{props.children}</Text>
+const ButtonText = props => (
   <Text {...props} style={[styles.buttonTexts, props.style]}>
   {props.children}
 </Text>
@@ -23,4 +16,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default buttonText;
+export default ButtonText;

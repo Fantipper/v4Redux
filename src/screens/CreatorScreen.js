@@ -21,10 +21,12 @@ export default class CreatorScreen extends Component {
           <ImageBackground
             style={styles.profileBackground}
             resizeMode= 'cover'
+            // FIXME:
             source={require('../assets/images/userA/background-01.jpg')}>
             <View style={styles.overlay}>
               <Image
                 style={styles.creatorIcon}
+                //FIXME:
                 source={require('../assets/images/userA/861.jpg')}/>
               <Text style={styles.creatorName}>
                   DJ Ash Millott

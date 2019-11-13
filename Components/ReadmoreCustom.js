@@ -5,7 +5,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import fonts from '../src/assets/Fonts';
 
-const readmoreText = props => (
+const ReadmoreText = props => (
   <Text style={styles.readmoreTexts}>{props.children}Read more ...</Text>
 );
 
@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Larsseit,
     fontSize: 18,
     color: '#6a6a6a', // TO-EDIT: may need to pick a darker color
-    textDecorationLine: 'underline',
+    textDecorationLine: 'underline'
   }
 });
 
-export default readmoreText;
+export default ReadmoreText;

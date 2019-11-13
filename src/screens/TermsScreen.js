@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   goWebsiteText: {
     fontFamily: fonts.Larsseit,
     fontSize: 18,
-    color: '#7e7e7e', // TO-EDIT: may need to pick a darker color
+    color: '#7e7e7e', //TODO: may need to pick a darker color
     textAlign: 'center',
     textDecorationLine: 'underline',
     lineHeight: 26

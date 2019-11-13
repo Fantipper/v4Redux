@@ -1,13 +1,13 @@
 /* NotificationScreen.js */
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, ScrollView, TextInput, Button } from 'react-native';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
 export default class NotificationScreen extends Component {
   constructor () {
     super()
     this.state = {
-      types1: [{label: 'param1', value: 0}, {label: 'param2', value: 1}],
+      types1: [{label: 'pard22am1', value: 0}, {label: 'param2', value: 1}],
       value1: 0,
       value1Index: 0,
       value1_1: 0,
@@ -23,8 +23,11 @@ export default class NotificationScreen extends Component {
     }
   }
 
+  onEndTest() {
+    () => this.refs.radioForm.updateIsActiveIndex(-1);
+  }
   endEditing() {
-    this.refs.radioFormForm.updateIsActiveIndex(0);
+    () => this.refs.radioFormForm.updateIsActiveIndex(0);
 
   }
   // handleOnChange() {
@@ -67,6 +70,14 @@ export default class NotificationScreen extends Component {
                 })
               }}
             />
+            <TextInput 
+              style={{ fontFamily: fonts.LarsseitBold, fontSize: 26, color: '#00d278', borderColor: '#00d278', borderWidth: 2, paddingVertical: 18, borderRadius: 8, marginVertical: 20, backgroundColor: '#ffffff', paddingHorizontal: 20}} 
+              keyboardType='decimal-pad' 
+              // onEndEditing={this.onEndTest}
+              onEndEditing={() => this.refs.radioForm.updateIsActiveIndex(-1)}
+            />
+            <View>{this.initial === -1 ? <Text>nnnn</Text> : <Text>{this.state.types1[this.state.value1Index].label}</Text>}
+            </View>
             {/* <Text>selected: {this.state.types1[this.state.value1Index].label}</Text> */}
 
             <Button
@@ -94,6 +105,7 @@ export default class NotificationScreen extends Component {
             <RadioForm
               formHorizontal={true}
               animation={true}
+              ref="advForm"
             >
               {this.state.types2.map((obj, i) => {
                 var that = this;
@@ -117,7 +129,12 @@ export default class NotificationScreen extends Component {
                 )
               })}
             </RadioForm>
-            <Text>selected: {this.state.types2[this.state.value2Index].label}</Text>
+            <TextInput 
+              style={{ fontFamily: fonts.LarsseitBold, fontSize: 26, color: '#00d278', borderColor: '#00d278', borderWidth: 2, paddingVertical: 18, borderRadius: 8, marginVertical: 20, backgroundColor: '#ffffff', paddingHorizontal: 20}} 
+              keyboardType='decimal-pad' 
+              onEndEditing={() => this.refs.advForm.updateIsActiveIndex(-1)}
+            />
+            {/* <Text>selected: {this.state.types2[this.state.value2Index].label}</Text> */}
           </View>
 
           <Text style={styles.welcome}>3. Pro</Text>
@@ -161,10 +178,7 @@ export default class NotificationScreen extends Component {
               keyboardType='decimal-pad' 
               onChangeText={(text) => this.setState({text})}
               defaultValue={this.state.types3[this.state.value3Index].label}
-              onEndEditing={() => this.endEditing()}
-              // onEndEditing={this.handleOnChange}
-              // onSubmitEditing={this.handleOnChange}
-              // value={this.state.text}
+              onEndEditing={() => this.refs.radioFormForm.updateIsActiveIndex(-1)}
             />
             <Text>{'user input: ' + this.state.text}</Text>
           </View>
