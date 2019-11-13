@@ -72,9 +72,9 @@ export default class RegisterScreen extends Component {
         </View>
         <View style={styles.hr} />
         {/* <FBLoginButton /> */}
-        <View style={styles.dividerContainer}>
+        <View style={styles.hrOrContainer}>
           <View style={styles.hrOR} />
-          <Text style={styles.dividerText}>OR</Text>
+          <Text style={styles.hrOrText}>OR</Text>
           <View style={styles.hrOR} />
         </View>
         <TextInput 
@@ -170,6 +170,23 @@ const styles = StyleSheet.create ({
  		width: fullWidth-50,
  		marginVertical: 30,
 	}, 
+	hrOrContainer: {
+		flexDirection: 'row',
+		alignItems: 'center'
+	},
+	hrOR: {
+    backgroundColor: '#d6d6d6',
+    height: 2,
+		width: (fullWidth-100)/2,
+		marginHorizontal: 10
+	},
+	hrOrText: {
+    fontSize: 16,
+    fontFamily: fonts.LarsseitBold,
+    letterSpacing: 2,
+    fontWeight: '500',
+    color: '#d6d6d6'
+	},
 	screenTitle: {
     fontSize: 22,
     fontFamily: fonts.RobotoBold,
