@@ -48,7 +48,7 @@ passport.use('jwt', new JwtStrategy(options, function(jwt_payload, done) {
 
 
 // connecting to mongoose database
-mongoose.connect(MONGOURL)
+mongoose.connect(MONGOURL,{ useNewUrlParser: true })
 .then(()=> console.log('DB connected'))
 .catch(error => console.log(error));
 

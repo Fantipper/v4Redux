@@ -6,6 +6,9 @@ const User = require('../models/user');
 
 const secret = '7x0jhxt&quot;9(thpX6';
 
+router.post('/', function(req, res, next) {
+  
+})
 router.post('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
     if (err) {

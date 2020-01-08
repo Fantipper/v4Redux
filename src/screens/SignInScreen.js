@@ -1,7 +1,7 @@
 /** SignInScreen.js */
 
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Dimensions, Button, TextInput, TouchableOpacity, ScrollView, CheckBox } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, AsyncStorage, Button, TextInput, TouchableOpacity, ScrollView, CheckBox } from 'react-native';
 import fonts from '../assets/Fonts';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 var fullWidth = Dimensions.get('window').width; //full width
@@ -13,24 +13,59 @@ export default class SignInScreen extends Component {
 		super();
 		this.state = { email: "", password: "", check: false }
 	};
+
 	static defaultProps = {
 	  value: '',
 	  id: ''
 	  // isFocused: false,
 	}
-	onChangeText(value) {
-		this.setState({ email: value });
-	}
-	_submitCheck() {
-		const { email, password } = this.state
-	};
+	// onChangeText(value) {
+	// 	this.setState({ email: value });
+	// }
+	// _submitCheck() {
+	// 	const { email, password } = this.state
+	// };
 	_handleCheckBox() {
 		this.setState({ check: !this.state.check })
 		//TODO: make it remember the user
 	};
-	_handleSignIn() {
+	_handleSignIn = () => {
 		// TODO:
+		// alert(this.state.email);
+		fetch('mongodb://fantipper:fantipper123@ds123311.mlab.com:23311/fantipper/users', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: this.state.email,
+				password: this.state.password,
+			})
+		})
+		.then((response) => response.json())
+		.then((res) => {
+			alert(res.message);
+			if(res.success === true) {
+				AsyncStorage.setItem('user', res.user);
+				this.props.navigation.navigate('app');
+			}
+			else{ 
+				alert(res.message);
+			}
+		}).done();
 	}
+
+	componentDidMount() {
+		this._loadInitialState().done();
+	}
+	_loadInitialState = async() => {
+		var value = await AsyncStorage.getItem('user');
+		if (value !== null) {
+			this.props.navigation.navigate('app');
+		}
+	}
+	
 	render() {
 		return (
 			<ScrollView contentContainerStyle={styles.contentContainer}>
@@ -80,14 +115,8 @@ export default class SignInScreen extends Component {
    					<Text style={styles.hrOrText}>OR</Text>
    					<View style={styles.hrOR} />
    				</View>
-					<TextInput />
-					<Text>email: {this.state.email}</Text>
-					<Text>password: {this.state.password}</Text>
-{/*    				
-				<TextInputComp id='Email' />
-				<TextInputComp id='Password' />
-		 */}
-
+					<Text>debug email: {this.state.email}</Text>
+					<Text>debug password: {this.state.password}</Text>
 		 			<TextInput 
 						placeholder='Email'
 						placeholderTextColor='#6a6a6a'
@@ -101,21 +130,12 @@ export default class SignInScreen extends Component {
 						// onBlur={(e) => this.onBlur(e)}
 						keyboardType='email-address'
 						onChangeText={(email) => this.setState({ email })}
+						onSubmitEditing={() => this.password.focus()}
 						// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
-						style={{
-							width: fullWidth-40,
-							height: 52,
-							backgroundColor: 'white',
-							borderColor: '#d6d6d6',
-							borderRadius: 8,
-							borderWidth: 2,
-							fontFamily: fonts.Larsseit,
-							fontSize: 18,
-							marginVertical: 6,
-							paddingHorizontal: 26,
-						}}
+						style={styles.inputBoxBase}
 					/>
 					<TextInput 
+						ref={(input => this.password = input)}
 						placeholder='Password'
 						placeholderTextColor='#6a6a6a'
 						value={this.state.password}
@@ -125,19 +145,8 @@ export default class SignInScreen extends Component {
 						password={true}
 						keyboardType='default'
 						onChangeText={(password) => this.setState({ password })}
-						onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
-						style={{
-							width: fullWidth-40,
-							height: 52,
-							backgroundColor: 'white',
-							borderColor: '#d6d6d6',
-							borderRadius: 8,
-							borderWidth: 2,
-							fontFamily: fonts.Larsseit,
-							fontSize: 18,
-							marginVertical: 6,
-							paddingHorizontal: 26,
-						}}
+						// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
+						style={styles.inputBoxBase}
 					/>
 				<View style={{flexDirection: 'row', alignItems: 'center'}}>
 				  <CheckBox value={this.state.check} onChange={() => this._handleCheckBox()} />
@@ -258,5 +267,17 @@ const styles = StyleSheet.create ({
     letterSpacing: 3,
     marginLeft: 10,
     textTransform: 'uppercase'
-  }
+	},
+	inputBoxBase: {
+		width: fullWidth-40,	//TODO: confirm if -40 or -50
+		height: 52,
+		fontFamily: fonts.Larsseit,
+		fontSize: 18,
+		borderColor: '#d6d6d6',
+		borderWidth: 2,
+		borderRadius: 8,
+		backgroundColor: '#ffffff',		
+		paddingHorizontal: 26,
+		marginVertical: 6,
+	}
 });
