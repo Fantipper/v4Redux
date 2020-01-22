@@ -12,9 +12,11 @@ export default class RegisterScreen extends Component {
 	  super(props);
 	
 	  this.state = {
-	 //  	email: '',
-	 //  	password: '',
-		// confirmPassword: ''
+			name: '',
+	  	email: '',
+	  	password: '',
+			confirmPassword: '',
+			location: ''
 	  };
 	}
 
@@ -54,17 +56,17 @@ export default class RegisterScreen extends Component {
 		return(
 			<ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.screenTitle}>Register</Text>
-        <View style={styles.signinTextCont}>
+        <View style={styles.signinTextContainer}>
           <Text style={styles.signinText}>Already have an account? </Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('SignIn')}>
             <Text style={styles.signinBtn}>Sign in</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.siteTextCont}>
+        <View style={styles.siteTextContainer}>
           <Text style={styles.instructions}>To become a Creator, please visit our </Text>
-          <View style={styles.siteBtnCont}>
+          <View style={styles.siteBtnContainer}>
             <TouchableOpacity>
-              {/* TODO: open browser & navigate to our website */}
+              {/* TODO: function to open browser & navigate to our website */}
                 <Text style={styles.siteBtn}>full desktop site</Text>
               </TouchableOpacity>
             <Text style={styles.instructions}>.</Text>
@@ -77,79 +79,84 @@ export default class RegisterScreen extends Component {
           <Text style={styles.hrOrText}>OR</Text>
           <View style={styles.hrOR} />
         </View>
+				<TextInput
+					placeholder='Name'
+					placeholderTextColor='#6a6a6a'
+					autoCapitalize='words'
+					value={this.state.name}
+					maxLength={60}
+					editable={true}
+					keyboardType='default'
+					onChangeText={(name) => this.setState({ name })}
+					onSubmitEditing={() => this.email.focus()}
+					underlineColorAndroid='rgba(0,0,0,0)'
+					// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
+					style={styles.inputBoxBase}
+				/>
         <TextInput 
-   					// onFocus={this.onFocusChange.bind(this)}
-   					// onBlur={this.onBlurChange}
-   					// onFocus={alert("on focus")}
-   					style={[styles.inputBox, this.state.isFocused ? styles.boxActive : styles.boxInactive ]} 
-   					// style={styles.inputBox, borderColor: this.state.borderColor } 
-   					style={{borderColor: this.state.borderColor }} 
-
-   					// onBlur={ () => this.onBlur() }
-   					// onFocus={ () => this.onFocus() }
-   					underlineColorAndroid='rgba(0,0,0,0)'
-   					placeholder="Name" 
-   					placeholderTextColor="grey" 
-   					returnKeyType="next"
-   					onSubmitEditing={() => this.email.focus()}
-
-   					/>
+					ref={(input => this.email = input)}
+					placeholder='Email'
+					placeholderTextColor='#6a6a6a'
+					autoCapitalize='none'
+					value={this.state.email}
+					maxLength={60}
+					editable={true}
+					keyboardType='email-address'
+					onChangeText={(email) => this.setState({ email })}
+					onSubmitEditing={() => this.password.focus()}
+					underlineColorAndroid='rgba(0,0,0,0)'
+					// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
+					style={styles.inputBoxBase}
+				/>
 				<TextInput 
-   					ref={(input) => this.email = input}
-   					// onFocus={this.onFocusChange.bind(this)}
-   					// onBlur={this.onBlurChange}
-   					// style={styles.inputBox} 
-   					// style={[styles.inputBox, this.state.isFocused ? styles.boxActive : styles.boxInactive ]} 
-
-   					// onFocus={ () => this.onFocus() }
-   					// onBlur={ () => this.onBlur() }
-   					selectionColor="yellow"
-   					underlineColorAndroid='rgba(0,0,0,0)'
-   					placeholder="Email" 
-   					placeholderTextColor="grey" 
-   					keyboardType="email-address"
-   					autoCapitalize="none"
-   					autoCorrect={false}
-   					onSubmitEditing={() => this.password.focus()}
-					// onChangeText={(email) => this.setState({email})}
-   					/>
-   					
-   				<TextInput 
-   					ref={(input) => this.password = input}
-   					style={styles.inputBox} 
-   					// onFocus={ () => this.onFocus() }
-   					// onBlur={ () => this.onBlur() }
-   					underlineColorAndroid='rgba(0,0,0,0)'
-   					placeholder="Password" 
-   					secureTextEntry={true}
-   					placeholderTextColor="grey"
-   					onSubmitEditing={() => this.confirmPassword.focus()}
-   					/>
+					ref={(input => this.password = input)}
+					placeholder='Password'
+					placeholderTextColor='#6a6a6a'
+					value={this.state.password}
+					maxLength={40}
+					editable={true}
+					secureTextEntry={true}
+					password={true}
+					keyboardType='default'
+					onChangeText={(password) => this.setState({ password })}
+					onSubmitEditing={() => this.confirmPassword.focus()}
+					// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
+					style={styles.inputBoxBase}
+				/>
 				<TextInput 
-   					ref={(input) => this.confirmPassword = input}
-   					style={styles.inputBox} 
-   					// onFocus={ () => this.onFocus() }
-   					// onBlur={ () => this.onBlur() }
-   					underlineColorAndroid='rgba(0,0,0,0)'
-   					placeholder="Confirm Password" 
-   					secureTextEntry={true}
-   					placeholderTextColor="grey" 
-   					onSubmitEditing={() => this.location.focus()}
-   					/>
-   				<TextInput 
-   					ref={(input) => this.location = input}
-   					style={styles.inputBox} 
-   					// onFocus={ () => this.onFocus() }
-   					// onBlur={ () => this.onBlur() }
-   					underlineColorAndroid='rgba(0,0,0,0)'
-   					placeholder="Location" 
-   					placeholderTextColor="grey" 
-   					/>
+					ref={(input => this.confirmPassword = input)}
+					placeholder='Confirm Password'
+					placeholderTextColor='#6a6a6a'
+					value={this.state.passwordConfirm}
+					maxLength={40}
+					editable={true}
+					secureTextEntry={true}
+					password={true}
+					keyboardType='default'
+					onChangeText={(passwordConfirm) => this.setState({ passwordConfirm })}
+					onSubmitEditing={() => this.location.focus()}
+					// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
+					style={styles.inputBoxBase}
+				/>
+				<TextInput
+					ref={(input) => this.location = input}
+					placeholder='Location'
+					placeholderTextColor='#6a6a6a'
+					value={this.state.location}
+					maxLength={40}
+					editable={true}
+					keyboardType='default'
+					onChangeText={(location) => this.setState({ location })}
+					underlineColorAndroid='rgba(0,0,0,0)'
+					// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
+					style={styles.inputBoxBase}
+				/>
+   	
 				<TouchableOpacity style={styles.btn_choosePhoto}>
-					<Text style={styles.buttonText}>CHOOSE PROFILE PHOTO</Text>
+					<Text style={styles.btnText}>CHOOSE PROFILE PHOTO</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.btn_register}>
-					<Text style={styles.buttonText}>REGISTER!</Text>
+					<Text style={styles.btnText}>REGISTER!</Text>
 				</TouchableOpacity>
         <TermsFooter />
 			</ScrollView>
@@ -194,7 +201,7 @@ const styles = StyleSheet.create ({
     textAlign: 'center',
     margin: 24,
 	},	/* already have an account */
-	signinTextCont: {
+	signinTextContainer: {
 		// flexGrow: 1,
 		alignItems: 'flex-end',
 		paddingVertical: 16,
@@ -210,13 +217,13 @@ const styles = StyleSheet.create ({
 		color: '#00d278',
 		textDecorationLine: 'underline',
 	}, /* full desktop site for creator */
-	siteTextCont: {
+	siteTextContainer: {
 		alignItems: 'flex-end',
 		paddingVertical: 16,
 		// flexDirection: 'row',
 		alignItems: 'center',
 	},
-	siteBtnCont: {
+	siteBtnContainer: {
 		flexDirection: 'row',
 	},
 	instructions: {
@@ -232,15 +239,7 @@ const styles = StyleSheet.create ({
 		// alignItems: 'center',
 		textDecorationLine: 'underline',
 	},
-	inputBox: {
-		width: 300,
-		backgroundColor: 'white',
-		borderRadius: 20,
-		// borderColor: '#dfdfdf',
-		paddingHorizontal: 16,
-		fontSize: 16,
-		marginVertical: 6,
-	},
+	// FIXME:
 	boxActive: {
 		borderWidth: 2,
 		borderColor: '#00d278',
@@ -250,30 +249,41 @@ const styles = StyleSheet.create ({
 		borderColor: 'black',
 	},
 	btn_choosePhoto: {
-		width: 300,
-		// height: 50,
-		// paddingHorizontal: 16,
-		marginVertical: 6,
-		borderRadius: 15,
-		paddingVertical: 14,
+		width: fullWidth-40,
+		height: 64,
+		marginVertical: 12,
+		borderRadius: 8,
+		paddingVertical: 18,
 		backgroundColor: '#939393',
 	},
 	btn_register: {
-		width: 300,
-		// height: 50,
-		// paddingHorizontal: 16,
-		marginVertical: 6,
-		borderRadius: 15,
-		paddingVertical: 14,
-		backgroundColor: '#00d278',
+		width: fullWidth-40,
+		height: 64,
+		marginVertical: 12,
+		borderRadius: 8,
+		paddingVertical: 18,
+		backgroundColor: '#00d278'
 	},
-	buttonText: {
+	btnText: {
+    fontSize: 18,
+    fontWeight: '700',
+		textAlign: 'center',
+    fontFamily: fonts.LarsseitBold,
+    color: '#ffffff',
+    letterSpacing: 3,
+    marginLeft: 10,
+    textTransform: 'uppercase'
+	},
+	inputBoxBase: {
+		width: fullWidth-40,	//TODO: confirm if -40 or -50
+		height: 52,
 		fontFamily: fonts.Larsseit,
-    fontSize: 17,
-    fontWeight: '200',
-		color: '#ffffff',
-    textAlign: 'center',
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
+		fontSize: 18,
+		borderColor: '#d6d6d6',
+		borderWidth: 2,
+		borderRadius: 8,
+		backgroundColor: '#ffffff',		
+		paddingHorizontal: 26,
+		marginVertical: 6,
+	}
 });

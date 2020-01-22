@@ -79,7 +79,7 @@ export default class SignInScreen extends Component {
 	   				</View>
 					</View>
    				<View style={styles.hr} />
-					 {/* <FBLoginButton /> */}
+					 {/* //TODO: <FBLoginButton /> */}
 					 <View style={styles.socialBtnsContainer}>
 						<View style={[styles.btn_social, styles.btn_fb]}>
 							<FontAwesome.Button 
@@ -96,6 +96,7 @@ export default class SignInScreen extends Component {
 							</FontAwesome.Button>
 						</View>
 						<View style={styles.btn_social}>
+						 {/* //TODO: Google login function */}
 							<FontAwesome.Button 
 								name='google'
 								size={30}
@@ -131,6 +132,7 @@ export default class SignInScreen extends Component {
 						keyboardType='email-address'
 						onChangeText={(email) => this.setState({ email })}
 						onSubmitEditing={() => this.password.focus()}
+						underlineColorAndroid='rgba(0,0,0,0)'
 						// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
 						style={styles.inputBoxBase}
 					/>
@@ -145,6 +147,7 @@ export default class SignInScreen extends Component {
 						password={true}
 						keyboardType='default'
 						onChangeText={(password) => this.setState({ password })}
+						underlineColorAndroid='rgba(0,0,0,0)'
 						// onSubmitEditing={(e) => this.onSubmitEditing(e.nativeEvent.text)}
 						style={styles.inputBoxBase}
 					/>
@@ -152,7 +155,7 @@ export default class SignInScreen extends Component {
 				  <CheckBox value={this.state.check} onChange={() => this._handleCheckBox()} />
 					<Text style={styles.instructions}>Remember me?</Text>
 				</View>
-				<Text style={styles.forgotpasswordBtn}>Forgot your password?</Text>
+				<Text style={styles.forgotpasswordBtn} onPress={() => this.props.navigation.navigate('ForgotPW')}>Forgot your password?</Text>
 				<TouchableOpacity style={styles.btn_signin} onPress={this._handleSignIn} >
 					<Text style={styles.btnText}>SIGN IN!</Text>
 				</TouchableOpacity>

@@ -19,6 +19,7 @@ import AuthLoading from './src/screens/AuthLoading';
 import AuthScreen from './src/screens/AuthScreen';
 import SignInScreen from './src/screens/SignInScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
+import ForgotPWScreen from './src/screens/ForgotPWScreen';
 
 import HomeScreen from './src/screens/Home';
 import Cards from './src/screens/Cards';
@@ -161,16 +162,27 @@ const AppBottomTabNavigator = createBottomTabNavigator ({
 
 const AuthStack = createStackNavigator({
   AuthScreen: {
-    screen: AuthScreen
+    screen: AuthScreen,   
+    navigationOptions: {
+      headerMode: 'none'
+    }
+      // FIXME: remove header from auth screen, confirm with ash
   },
   SignIn: {
     screen: SignInScreen
   },
   Register: {
     screen: RegisterScreen
+  },
+  ForgotPW: {
+    screen: ForgotPWScreen,
+    navigationOptions: {
+      // headerRight: true,
+
+    }
   }
 },{
-  headerMode: 'none',
+  // headerMode: 'none',
 });
 
 const InitialStackNavigator = createStackNavigator ({
