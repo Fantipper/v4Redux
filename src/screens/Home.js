@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import fonts from '../assets/Fonts';
 import Cards from './Cards';
 
+// TODO: add the navigation on the card fan tip hand shake logo too
+
 class Home extends Component {
   render() {
     return (
