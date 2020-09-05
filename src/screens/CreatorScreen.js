@@ -1,45 +1,56 @@
 /* CreatorScreen.js */
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { View, StyleSheet, Text, ScrollView, Dimensions, Image, ImageBackground } from 'react-native';
-import { ListItem, Body, Content, Card, CardItem } from 'native-base';
-// import Hr from 'react-native-hr';
+import { View, StyleSheet, Text, ScrollView, Dimensions, Image, ImageBackground } from "react-native";
+import { ListItem, Body, Content, Card, CardItem } from "native-base";
+// import Hr from "react-native-hr";
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from "react-native-vector-icons/FontAwesome";
 
-import images from '../assets/Images';
-import Fonts from '../assets/Fonts';
-import CT from '../assets/CT';
+import images from "../assets/Images";
+import Fonts from "../assets/Fonts";
+import CT from "../assets/CT";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-var fullWidth = Dimensions.get('window').width; //full width
+var fullWidth = Dimensions.get("window").width; //full width
 
 export default class CreatorScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fisrtname: "",
+      lastname: "",
+      name: "DJ Ash Millott",
+      location: "MOSCOW, RUSSIA",
+    };
+  }
+
   render() {
     return(
       <View style={styles.container}>
         <ScrollView>
           <ImageBackground
             style={styles.profileBackground}
-            resizeMode= 'cover'
+            resizeMode= "cover"
             // FIXME:
-            source={require('../assets/images/userA/background-01.jpg')}>
+            source={require("../assets/images/userA/background-01.jpg")}>
             <View style={styles.overlay}>
               <Image
                 style={styles.creatorIcon}
                 //FIXME:
-                source={require('../assets/images/userA/861.jpg')}/>
+                source={require("../assets/images/userA/861.jpg")}/>
               <Text style={styles.creatorName}>
-                  DJ Ash Millott
+                {this.state.name}
               </Text>
               <Text style={styles.subtitleText}>
-                  MOSCOW, RUSSIA
+                {this.state.location}
               </Text>
               <View style={styles.shareBtnRow}>
                 <View style={styles.shareBtnContainer}>
                   <Icon.Button 
                     style={styles.shareBtnStyle}
                     name="facebook" 
-                    backgroundColor='#3b5998'>
+                    backgroundColor="#3b5998">
                       <CT.ButtonText>Share</CT.ButtonText>
                   </Icon.Button>
                 </View>
@@ -47,7 +58,7 @@ export default class CreatorScreen extends Component {
                   <Icon.Button 
                     style={styles.shareBtnStyle}
                     name="twitter" 
-                    backgroundColor='#4099FF'>
+                    backgroundColor="#4099FF">
                     <CT.ButtonText>Tweet</CT.ButtonText>
                   </Icon.Button>
                 </View>
@@ -55,18 +66,18 @@ export default class CreatorScreen extends Component {
                   <Icon.Button 
                     style={styles.shareBtnStyle}
                     name="instagram" 
-                    backgroundColor='#DA3176'>
+                    backgroundColor="#DA3176">
                     <CT.ButtonText>Share</CT.ButtonText>
                   </Icon.Button>
                 </View>
-              </View>
+              </View> 
               <View style={styles.shareFanTip}>
                 <Icon.Button 
                   style={styles.shareBtnStyle}
                   name="paperclip" 
-                  color='#8C8C8C'
-                  backgroundColor='#DDDDDD'>
-                  <CT.ButtonText style={{color: '#8C8C8C'}}>FanTipper.com/diash</CT.ButtonText>
+                  color="#8C8C8C"
+                  backgroundColor="#DDDDDD">
+                  <CT.ButtonText style={{color: "#8C8C8C"}}>FanTipper.com/diash</CT.ButtonText>
                 </Icon.Button>
               </View>
             </View>
@@ -75,7 +86,9 @@ export default class CreatorScreen extends Component {
             <Card transparent style={styles.cardWithBottomBorder}>
               <CardItem>
                 <Body style={styles.bodyCenterContainer}>
-                  <Image source={images.broShakeLogo} style={styles.broShakeLogo}/>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate("sendTip")}>
+                    <Image source={images.broShakeLogo} style={styles.broShakeLogo}/>
+                  </TouchableOpacity>
                 </Body>
               </CardItem>
             </Card>
@@ -100,16 +113,16 @@ export default class CreatorScreen extends Component {
               </CardItem>
             </Card>
             <Card transparent style={styles.cardWithBottomBorder}>
-              <CardItem><Icon name='heart' color='#00d278' size={18} style={{marginRight: 10}}/><CT.Header3Text>top fans</CT.Header3Text></CardItem>
+              <CardItem><Icon name="heart" color="#00d278" size={18} style={{marginRight: 10}}/><CT.Header3Text>top fans</CT.Header3Text></CardItem>
               <Body></Body>
             </Card>
             <Card transparent style={styles.cardWithBottomBorder}>
               <CardItem><CT.Header3Text>about</CT.Header3Text></CardItem>
               <CardItem>
                 <Body>
-                  <Text style={{color: '#414042', fontFamily: fonts.Larsseit, fontSize: 18, fontWeight: 'bold', lineHeight: 26}}>From mad beats to wicked licks, DJ Ash mixes like a boss.</Text>
+                  <Text style={{color: "#414042", fontFamily: fonts.Larsseit, fontSize: 18, fontWeight: "bold", lineHeight: 26}}>From mad beats to wicked licks, DJ Ash mixes like a boss.</Text>
                   <View style={{paddingVertical:20}}>
-                    <Text style={{color: '#414042', fontFamily: fonts.Larsseit, fontSize: 18, letterSpacing: 0.5, lineHeight: 26}}>Paul Oakenfold describes his early life as a "bedroom DJ" in a podcasted interview with Vancouver's 24 Hours, stating he grew up listening to The Beatles. Later 21-year-old Oakenfold and lan Paul moved to 254 West 54th Sterrt. Studio 54's Steve Rubell ran the place and onlt alliwed popular people inside.</Text></View>
+                    <Text style={{color: "#414042", fontFamily: fonts.Larsseit, fontSize: 18, letterSpacing: 0.5, lineHeight: 26}}>Paul Oakenfold describes his early life as a "bedroom DJ" in a podcasted interview with Vancouver"s 24 Hours, stating he grew up listening to The Beatles. Later 21-year-old Oakenfold and lan Paul moved to 254 West 54th Sterrt. Studio 54"s Steve Rubell ran the place and onlt alliwed popular people inside.</Text></View>
                   <View style={{paddingVertical: 10}}><CT.ReadmoreText /></View>
                 </Body>
               </CardItem>
@@ -118,15 +131,15 @@ export default class CreatorScreen extends Component {
               <CardItem><CT.Header3Text>gallery</CT.Header3Text></CardItem>
               <CardItem>
                 <Body>
-                  <View style={{flexDirection:'row', justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: 20}} >
+                  <View style={{flexDirection:"row", justifyContent: "space-between", alignSelf: "stretch", paddingBottom: 20}} >
                     <Image source={images.defaultGallery} style={{height: 100, width: 166}}/>
                     <Image source={images.defaultGallery} style={{height: 100, width: 166}}/>
                   </View>
-                  <View style={{flexDirection:'row',justifyContent: 'space-between', alignSelf: 'stretch', paddingBottom: 20}} >
+                  <View style={{flexDirection:"row",justifyContent: "space-between", alignSelf: "stretch", paddingBottom: 20}} >
                     <Image source={images.defaultGallery} style={{height: 100, width: 166}}/>
                     <Image source={images.defaultGallery} style={{height: 100, width: 166}}/>
                   </View>
-                  <View style={{flexDirection:'row',justifyContent: 'space-between', alignSelf: 'stretch'}} >
+                  <View style={{flexDirection:"row",justifyContent: "space-between", alignSelf: "stretch"}} >
                     <Image source={images.defaultGallery} style={{height: 100, width: 166}}/>
                     <Image source={images.defaultGallery} style={{height: 100, width: 166}}/>
                   </View>  
@@ -134,7 +147,7 @@ export default class CreatorScreen extends Component {
               </CardItem>
             </Card>
             <Card transparent style={styles.cardWithBottomBorder}>
-              <CardItem><Icon name='comment' color='#00d278' size={18} style={{marginRight: 10}} /><CT.Header3Text>2 messages</CT.Header3Text></CardItem>
+              <CardItem><Icon name="comment" color="#00d278" size={18} style={{marginRight: 10}} /><CT.Header3Text>2 messages</CT.Header3Text></CardItem>
               <CardItem>
                 <Body>
                   
@@ -142,17 +155,19 @@ export default class CreatorScreen extends Component {
               </CardItem>
             </Card>
             <Card transparent style={styles.cardWithBottomBorder}>
-              <CardItem><Icon name='users' color='#00d278' size={18} style={{marginRight: 10}} /><CT.Header3Text>fanbase</CT.Header3Text></CardItem>
+              <CardItem><Icon name="users" color="#00d278" size={18} style={{marginRight: 10}} /><CT.Header3Text>fanbase</CT.Header3Text></CardItem>
               <CardItem>
                 <Body></Body>
               </CardItem>
             </Card>
             <Card transparent style={styles.cardWithoutBottomBorder}>
-              <CardItem><Text style={styles.supportText}>Become a fan of DJ Ash Millott and leave a message of support!</Text>
+              <CardItem><Text style={styles.supportText}>Become a fan of {this.state.name} and leave a message of support!</Text>
               </CardItem>
               <CardItem>
                 <Body style={styles.bodyCenterContainer}>
-                  <Image source={images.broShakeLogo} style={styles.broShakeLogo}/>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate("sendTip")}>
+                    <Image source={images.broShakeLogo} style={styles.broShakeLogo} />
+                  </TouchableOpacity>
                 </Body>
               </CardItem>
             </Card>
@@ -166,9 +181,9 @@ export default class CreatorScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
   },
   profileBackground: {
     height: 350, 
@@ -176,22 +191,22 @@ const styles = StyleSheet.create({
   },
   overlay: {
     height: 350,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 16,
   },
   creatorIcon: {
     height: 100, 
     width: 100, 
     borderRadius: 100 / 2, 
-    borderColor: 'white', 
+    borderColor: "white", 
     borderWidth: 2,
     marginBottom: 20,
   },
   creatorName: {
     fontFamily: fonts.LarsseitBold,
     fontSize: 32,
-    color: 'white',
+    color: "white",
     lineHeight: 30,
     marginVertical: 10,
   },
@@ -199,12 +214,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.LarsseitBold,
     fontSize: 16,
     letterSpacing: 1.5,
-    color: '#8c8c8c',
+    color: "#8c8c8c",
     lineHeight: 30,
-    textTransform: 'uppercase'
+    textTransform: "uppercase"
   },
   shareBtnRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingVertical: 16,
   },
   shareBtnContainer: {
@@ -214,53 +229,53 @@ const styles = StyleSheet.create({
     marginHorizontal: 6
   },
   bodyCenterContainer: {
-    flexDirection: 'row', 
-    justifyContent: 'center', 
+    flexDirection: "row", 
+    justifyContent: "center", 
     paddingVertical: 10
   },
   cardWithBottomBorder: {
     paddingVertical:12, 
-    borderBottomColor: '#6a6a6a', 
+    borderBottomColor: "#6a6a6a", 
     borderBottomWidth: 0.4
   },
   cardWithoutBottomBorder: {
     paddingVertical: 12
   },
   broShakeLogo: {
-    resizeMode: 'contain',
+    resizeMode: "contain",
     height: 56,
     borderRadius: 4
   },
   tipCountSection: {
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   tipColumnSection: {
-    flexDirection: 'column',
+    flexDirection: "column",
     width: 180
   },
   tipMoneyText: {
     fontFamily: Fonts.LarsseitBold,
     fontSize: 40, 
-    color: '#464646'
+    color: "#464646"
   },
   quoteText: {
     fontFamily: fonts.LarsseitBold,
-    color: '#00d278', //fan tip green
+    color: "#00d278", //fan tip green
     fontSize: 26,
     lineHeight: 30
   },
   targetText: {
     fontFamily: fonts.LarsseitBold,
-    color: '#cbcdce',
+    color: "#cbcdce",
     fontSize: 14,
     letterSpacing: 2,
-    textTransform: 'uppercase'
+    textTransform: "uppercase"
   },
   supportText: {
     fontFamily: fonts.LarsseitBold,
-    color: '#00d278',
+    color: "#00d278",
     fontSize: 24,
-    textAlign: 'center',
+    textAlign: "center",
     lineHeight: 30
   },
 });
