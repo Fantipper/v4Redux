@@ -26,9 +26,7 @@ class Cards extends Component {
         <Text style={styles.locationText}>Atomica</Text>
         <Text style={styles.cityText}>MELBOURNE</Text>
         <View style={{paddingTop: 18}}>
-          <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('creator')}
-          >
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('creatorProfile')}>
             <CT.ReadmoreText/>
           </TouchableOpacity>
           </View>
